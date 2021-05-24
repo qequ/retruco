@@ -8,9 +8,9 @@ class Position(Enum):
 
 class Card():
 
-    def __init__(self, type_card, value, position):
+    def __init__(self, value, type_card, position=Position.FACE_UP):
         """
-        type: Oro, Basto, Copa, Espada
+        type: O(ro), B(asto), C(opa), E(spada)
         Value: 1, 2, 3, ..., 12
         position: face up / face down 
         """
