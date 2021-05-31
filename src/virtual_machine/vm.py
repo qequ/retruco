@@ -108,6 +108,23 @@ class VirtualMachine():
 
         return eval(log_dec)
 
+    def eval_condition(self, cond):
+        """
+        method to determine boolean value of an encoded compound proposition.
+        cond(ition) is a compound string of encoded propositions.
+        &(and) has less precedence than |(or)
+        """
+        propositions = list(map(lambda s: s.split("&"), cond.split("|")))
+
+        logic = list(map(lambda l: list(
+            map(lambda x: self.decode_logical_condition(x), l)), propositions))
+
+        res = []
+        for b in logic:
+            res.append(all(b))
+
+        return any(res)
+
     def load_stacks(self):
         """
         Precondition: there are no repeated cards - the compiler must
