@@ -61,6 +61,52 @@ class TestLogicDecoder(unittest.TestCase):
         self.assertFalse(vm.decode_logical_condition("CEP0"))
         self.assertEqual(vm.error_code, 0)
 
+    def test_4(self):
+        stack_set_up = [
+            "01E",
+            "07B",
+            "12E",
+            "12B"
+        ]
+        opcodes_list = ["00"]
+
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        vm.load_stacks()
+        vm.execute_instruction()
+        self.assertTrue(vm.decode_logical_condition("CE==7"))
+        self.assertTrue(vm.decode_logical_condition("CE>6"))
+        self.assertTrue(vm.decode_logical_condition("CE<8"))
+        self.assertTrue(vm.decode_logical_condition("CE>P1"))
+
+        self.assertEqual(vm.error_code, 0)
+
+    def test_5(self):
+        stack_set_up = [
+            "01E",
+            "07B",
+            "12E",
+            "12B"
+        ]
+        opcodes_list = ["00", "2"]
+
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        vm.load_stacks()
+        vm.execute_instruction()
+        vm.execute_instruction()
+        self.assertFalse(vm.decode_logical_condition("CE==7"))
+        self.assertEqual(vm.error_code, 5)
+
+        self.assertFalse(vm.decode_logical_condition("CE>6"))
+        self.assertEqual(vm.error_code, 5)
+
+        self.assertFalse(vm.decode_logical_condition("CE<8"))
+        self.assertEqual(vm.error_code, 5)
+
+        self.assertFalse(vm.decode_logical_condition("CE>P1"))
+        self.assertEqual(vm.error_code, 5)
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
