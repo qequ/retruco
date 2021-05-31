@@ -22,7 +22,85 @@ class VirtualMachine():
         # 1 == FULL_HAND_ERROR
         # 2 == EMPTY_STACK_ERROR
         # 3 == EMPTY_HAND_ERROR
+        # 4 == LOGIC CONDITION ERROR
         self.error_code = 0
+
+    def decode_logical_condition(self, logic_cond):
+        log_dec = ""
+
+        if logic_cond[0] == "P":
+            # The frontend must ensure that logic_cond[1:-1] stack exists
+            # logic_cond == Px1...xn{E, N}
+            log_dec = "len(self.stacks[" + logic_cond[1:-1] + "]) == 0"
+
+            if logic_cond[-1] == "N":
+                log_dec = "not " + log_dec
+
+        elif logic_cond[0] == "C":
+            if self.hand == None:
+                # none card has been taken
+                self.error_code = 3
+                return False
+
+            # possible logic encondings
+            # C{E, N}{F, E, B, C, O, Px1...xn}
+            # C{E, N}{!=, =, <, >, <=, >=}{[1,2,...7, 10,...12], Px1...xn}
+            changing_part = logic_cond[2:]
+            if changing_part[0] == "F":
+                log_dec = "self.hand.position == Position.FACE_DOWN"
+            elif changing_part[0] in ["E", "B", "C", "O"]:
+                log_dec = "self.hand.type == '{}'".format(changing_part[0])
+
+            elif changing_part[0] == "P":
+                stack_num = int(changing_part[1:])
+
+                if len(self.stacks[stack_num]) == 0:
+                    self.error_code = 2
+                    return False
+
+                log_dec = "self.hand.type == self.stacks[{}][-1].type".format(
+                    stack_num)
+
+            elif changing_part[0] in ["!", "=", "<", ">"]:
+                if changing_part[1] == "=":
+                    logical_comp = changing_part[:2]
+                    offset = 2
+                else:
+                    logical_comp = changing_part[0]
+                    offset = 1
+
+                if changing_part[offset:][0] == 0:
+                    # check if the value of the card is equal to the
+                    # value of the card at the top of the stack Px1...xn
+                    stack_num = int(changing_part[offset+1:])
+                    if len(self.stacks[stack_num]) == 0:
+                        self.error_code = 2
+                        return False
+
+                    log_dec = "self.hand.value {} self.stacks[{}][-1].type".format(
+                        logical_comp, stack_num)
+
+                elif changing_part[offset:].isnumeric():
+                    # check if the value of the card is equal to a given
+                    # number
+                    log_dec = "self.hand.value {} {}".format(
+                        logical_comp, changing_part[offset:])
+
+                else:
+                    self.error_code = 4
+                    return False
+            else:
+                # error decoding logical instruction
+                self.error_code = 4
+                return False
+
+            if logic_cond[1] == "N":
+                log_dec = "not " + log_dec
+        else:
+            self.error_code = 4
+            return False
+
+        return eval(log_dec)
 
     def load_stacks(self):
         """
@@ -83,7 +161,6 @@ class VirtualMachine():
         self.hand.swap_position()
 
     def execute_instruction(self):
-        print(self.opcodes[self.pc][0])
         inst_type = self.opcodes[self.pc][0]
 
         # decoding instructions
