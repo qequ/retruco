@@ -105,7 +105,19 @@ class TestLogicDecoder(unittest.TestCase):
         self.assertFalse(vm.decode_logical_condition("CE>P1"))
         self.assertEqual(vm.error_code, 5)
 
+    def test_6(self):
+        stack_set_up = [
+            "01E",
+            "07B",
+            "12E",
+            "12B"
+        ]
+        opcodes_list = ["00", "2"]
 
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        vm.load_stacks()
+        vm.execute_instruction()
+        self.assertTrue(vm.eval_condition("CEF&CEE|CE12|CEB&P0N"))
 
 
 if __name__ == '__main__':
