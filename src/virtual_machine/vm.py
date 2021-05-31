@@ -23,6 +23,7 @@ class VirtualMachine():
         # 2 == EMPTY_STACK_ERROR
         # 3 == EMPTY_HAND_ERROR
         # 4 == LOGIC CONDITION ERROR
+        # 5 == FACE_DOWN_CARD_LOGIC_ERROR
         self.error_code = 0
 
     def decode_logical_condition(self, logic_cond):
@@ -69,7 +70,7 @@ class VirtualMachine():
                     logical_comp = changing_part[0]
                     offset = 1
 
-                if changing_part[offset:][0] == 0:
+                if changing_part[offset:][0] == "P":
                     # check if the value of the card is equal to the
                     # value of the card at the top of the stack Px1...xn
                     stack_num = int(changing_part[offset+1:])
@@ -77,7 +78,7 @@ class VirtualMachine():
                         self.error_code = 2
                         return False
 
-                    log_dec = "self.hand.value {} self.stacks[{}][-1].type".format(
+                    log_dec = "self.hand.value {} self.stacks[{}][-1].value".format(
                         logical_comp, stack_num)
 
                 elif changing_part[offset:].isnumeric():
@@ -89,6 +90,7 @@ class VirtualMachine():
                 else:
                     self.error_code = 4
                     return False
+
             else:
                 # error decoding logical instruction
                 self.error_code = 4
@@ -96,6 +98,10 @@ class VirtualMachine():
 
             if logic_cond[1] == "N":
                 log_dec = "not " + log_dec
+
+            if self.hand.position == Position.FACE_DOWN and changing_part[0] != "F":
+                self.error_code = 5
+                return False
         else:
             self.error_code = 4
             return False
