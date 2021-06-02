@@ -119,6 +119,19 @@ class TestLogicDecoder(unittest.TestCase):
         vm.execute_instruction()
         self.assertTrue(vm.eval_condition("CEF&CEE|CE12|CEB&P0N"))
 
+    def test_7(self):
+        stack_set_up = [
+            "01E",
+            "07B",
+            "12E",
+            "12B"
+        ]
+        opcodes_list = ["7P0N", "00", "2", "11", "8"]
+
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        vm.run()
+        self.assertEqual(vm.stacks[0], [])
+
 
 if __name__ == '__main__':
     unittest.main()
