@@ -13,7 +13,7 @@ class VirtualMachine():
         self.stacks_opcodes = stacks_opcodes
         self.pc = 0  # starting the program at the beginning of the opcodes list
         self.whilestack = []  # will keep an address stack to return
-        self.endwhilequeue = []  # address stack to jump when while ends
+        self.endwhilestack = []  # address stack to jump when while ends
         self.stacks = []  # will contain the stacks of cards
         self.hand = None  # the card that UCP holds in it hand
         # if any problem occurs during instructions execution this flag
@@ -125,6 +125,50 @@ class VirtualMachine():
 
         return any(res)
 
+    def while_decode(self):
+        # OPCODE FORM: 7{COMPOUND ENCODED PROPOSITION}
+        if len(self.whilestack) == 0 or self.whilestack[-1] != self.pc:
+            # it's a new while loop
+            # search for the its endwhile instruction and add it to the
+            # endwhile stack
+            nested_level = 1
+            address = self.pc
+            # as a precondition every while opcode has an endwhile opcode
+            while nested_level != 0:
+                address += 1
+
+                if self.opcodes[address][0] == "7":
+                    # nested while
+                    nested_level += 1
+
+                elif self.opcodes[address][0] == "8":
+                    # found an endwhile
+                    if nested_level == 1:
+                        # its the endwhile corresponding to the while
+                        self.endwhilestack.append(address)
+                    nested_level -= 1
+
+            self.whilestack.append(self.pc)
+
+        # the precondition in this part of the code is that
+        # the top of both stacks(while and endwhile) has the
+        # current while and endwhile addresses
+        eval_bool = self.eval_condition((self.opcodes[self.pc])[1:])
+        if self.error_code != 0:
+            return
+
+        if eval_bool:
+            # enter the while loop
+            self.pc += 1
+        else:
+            # jump to the end_while address + 1 opcode
+            self.pc = self.endwhilestack.pop() + 1
+            self.whilestack.pop()
+
+    def endwhile_decode(self):
+        # branching to the while again
+        self.pc = self.whilestack[-1]
+
     def load_stacks(self):
         """
         Precondition: there are no repeated cards - the compiler must
@@ -196,13 +240,16 @@ class VirtualMachine():
         elif inst_type == "2":
             self.invert_hand_card()
             self.pc += 1
+        elif inst_type == "7":
+            self.while_decode()
+        elif inst_type == "8":
+            self.endwhile_decode()
 
     def run(self):
         """
         Main loop of the virtual machine
         """
         self.load_stacks()
-
         while self.pc != len(self.opcodes):
             # fetch - decode - execute
             self.execute_instruction()
