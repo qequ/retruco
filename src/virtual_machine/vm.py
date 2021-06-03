@@ -277,6 +277,11 @@ class VirtualMachine():
                 print("ERRROR CODE 2 - EMPTY_STACK_ERROR")
             elif self.error_code == 3:
                 print("ERROR CODE 3 - EMPTY_HAND_ERROR")
+            elif self.error_code == 4:
+                print("ERROR CODE 4 - LOGIC CONDITION ERROR")
+            elif self.error_code == 5:
+                print("ERROR CODE 3 - FACE_DOWN_CARD_LOGIC_ERROR")
+
             print("EXECUTION INTERRUPTED")
 
     def show_machine_status(self):
