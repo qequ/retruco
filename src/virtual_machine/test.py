@@ -1,5 +1,6 @@
 import unittest
 from vm import VirtualMachine
+from cards import Card, Position
 
 
 class TestLogicDecoder(unittest.TestCase):
@@ -143,6 +144,45 @@ class TestLogicDecoder(unittest.TestCase):
         vm = VirtualMachine(opcodes_list, stack_set_up)
         vm.run()
         self.assertEqual(vm.stacks[0], [])
+        self.assertEqual(vm.error_code, 0)
+
+    def test_8(self):
+        stack_set_up = [
+            "0E1",
+            "0B7",
+            "0C1",
+            "0O2",
+            "1E2",
+            "1B2",
+            "2"
+        ]
+        opcodes_list = ["00", "7CNB&P0N", "12", "00", "8", "2"]
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        vm.run()
+        vm.show_machine_status()
+        self.assertEqual(len(vm.stacks[0]), 1)
+        self.assertEqual(vm.hand.type, "B")
+        self.assertEqual(vm.hand.value, 7)
+        self.assertEqual(vm.error_code, 0)
+
+    def test_8(self):
+        stack_set_up = [
+            "0E1",
+            "0C1",
+            "0O2",
+            "1E2",
+            "1B2",
+            "2"
+        ]
+        opcodes_list = ["00", "7CNB&P0N", "12", "00", "8", "2"]
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        vm.run()
+        vm.show_machine_status()
+        self.assertEqual(len(vm.stacks[0]), 0)
+        self.assertEqual(vm.hand.type, "E")
+        self.assertEqual(vm.hand.value, 1)
+
+        self.assertEqual(vm.error_code, 0)
 
 
 if __name__ == '__main__':
