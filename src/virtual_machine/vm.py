@@ -175,7 +175,9 @@ class VirtualMachine():
         handle that error.
         Decodes the stack opcodes and creates the stacks and the cards
         they belong.
-        Instruction form; SVP
+        An empty stack instructios should be before of a SPV instruction
+        of the same stack
+        Instruction form; SPV - S(if the stack is empty)
         S: index of stack they belong, if there is no stack with that index
         it will be created.
         V: value of the card; {1,..., 7, 10, ..., 12}
@@ -185,14 +187,24 @@ class VirtualMachine():
 
         for ins in self.stacks_opcodes:
             # decode the instruction
-            sp = int(ins[0])
-            v = int(ins[1])
-            p = ins[2]
-            try:
-                self.stacks[sp].append(Card(v, p))
-            except IndexError:
-                self.stacks.insert(sp, [])
-                self.stacks[sp].append(Card(v, p))
+            if ins.isnumeric():
+                # its an empty stack
+                self.stacks.insert(int(ins), [])
+            else:
+                palo_index = 0
+                for i in range(len(ins)):
+                    if ins[i] in ["O", "E", "C", "B"]:
+                        palo_index = i
+                        break
+
+                sp = int(ins[:palo_index])
+                v = int(ins[palo_index + 1:])
+                p = ins[palo_index]
+                try:
+                    self.stacks[sp].append(Card(v, p))
+                except IndexError:
+                    self.stacks.insert(sp, [])
+                    self.stacks[sp].append(Card(v, p))
 
     def take_card(self):
         # OPCODE FORM: 0S where S is stack number
