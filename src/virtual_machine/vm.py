@@ -226,12 +226,13 @@ class VirtualMachine():
         they belong.
         An empty stack instructios should be before of a SPV instruction
         of the same stack
-        Instruction form; SPV - S(if the stack is empty)
+        Instruction form; SPVL || S(if the stack is empty)
         S: index of stack they belong, if there is no stack with that index
         it will be created.
         V: value of the card; {1,..., 7, 10, ..., 12}
         P: Palos of the game {O(ro), B(asto), E(spada), C(opa)}
         all the cards are face up when inserted.
+        L: Determines the Face position of the card: U(p) or D(own)
         """
 
         for ins in self.stacks_opcodes:
@@ -247,13 +248,17 @@ class VirtualMachine():
                         break
 
                 sp = int(ins[:palo_index])
-                v = int(ins[palo_index + 1:])
+                v = int(ins[palo_index + 1: -1])
                 p = ins[palo_index]
+                if ins[-1] == "D":
+                    l = Position.FACE_DOWN
+                else:
+                    l = Position.FACE_UP
                 try:
-                    self.stacks[sp].append(Card(v, p))
+                    self.stacks[sp].append(Card(v, p, l))
                 except IndexError:
                     self.stacks.insert(sp, [])
-                    self.stacks[sp].append(Card(v, p))
+                    self.stacks[sp].append(Card(v, p, l))
 
     def take_card(self):
         # OPCODE FORM: 0S where S is stack number
@@ -264,7 +269,7 @@ class VirtualMachine():
             self.error_code = 1
             return
 
-        if len(self.stacks[int(opcode[0])]) == 0:
+        if len(self.stacks[int(opcode[1:])]) == 0:
             self.error_code = 2
             return
 
@@ -278,7 +283,7 @@ class VirtualMachine():
             self.error_code = 3
             return
 
-        self.stacks[int(opcode[1])].append(self.hand)
+        self.stacks[int(opcode[1:])].append(self.hand)
         self.hand = None
 
     def invert_hand_card(self):
@@ -290,7 +295,6 @@ class VirtualMachine():
 
     def execute_instruction(self):
         inst_type = self.opcodes[self.pc][0]
-
         # decoding instructions
         if inst_type == "0":
             self.take_card()
@@ -327,15 +331,15 @@ class VirtualMachine():
         if self.error_code != 0:
             # showing error
             if self.error_code == 1:
-                print("ERRROR CODE 1 - FULL_HAND_ERROR")
+                print("ERROR CODE 1 - FULL_HAND_ERROR")
             elif self.error_code == 2:
-                print("ERRROR CODE 2 - EMPTY_STACK_ERROR")
+                print("ERROR CODE 2 - EMPTY_STACK_ERROR")
             elif self.error_code == 3:
                 print("ERROR CODE 3 - EMPTY_HAND_ERROR")
             elif self.error_code == 4:
                 print("ERROR CODE 4 - LOGIC CONDITION ERROR")
             elif self.error_code == 5:
-                print("ERROR CODE 3 - FACE_DOWN_CARD_LOGIC_ERROR")
+                print("ERROR CODE 5 - FACE_DOWN_CARD_LOGIC_ERROR")
 
             print("EXECUTION INTERRUPTED")
 
