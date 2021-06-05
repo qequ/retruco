@@ -19,12 +19,12 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_1(self):
         stack_set_up = [
-            "0E1",
-            "0B1",
-            "0C1",
-            "0O1",
-            "1E2",
-            "1B2"
+            "0E1U",
+            "0B1U",
+            "0C1U",
+            "0O1U",
+            "1E2U",
+            "1B2U"
         ]
         opcodes_list = []
 
@@ -35,7 +35,7 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_2(self):
         stack_set_up = [
-            "0E1",
+            "0E1U",
         ]
         opcodes_list = ["00", "10"]
 
@@ -60,10 +60,10 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_3(self):
         stack_set_up = [
-            "0E1",
-            "0B1",
-            "1E2",
-            "1B2"
+            "0E1U",
+            "0B1U",
+            "1E2U",
+            "1B2U"
         ]
         opcodes_list = ["00"]
 
@@ -76,10 +76,10 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_4(self):
         stack_set_up = [
-            "0E1",
-            "0B7",
-            "1E2",
-            "1B2"
+            "0E1U",
+            "0B7U",
+            "1E2U",
+            "1B2U"
         ]
         opcodes_list = ["00"]
 
@@ -95,10 +95,10 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_5(self):
         stack_set_up = [
-            "0E1",
-            "0B7",
-            "1E2",
-            "1B2"
+            "0E1U",
+            "0B7U",
+            "1E2U",
+            "1B2U"
         ]
         opcodes_list = ["00", "2"]
 
@@ -120,10 +120,10 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_6(self):
         stack_set_up = [
-            "0E1",
-            "0B7",
-            "1E2",
-            "1B2"
+            "0E1U",
+            "0B7U",
+            "1E2U",
+            "1B2U"
         ]
         opcodes_list = ["00", "2"]
 
@@ -134,10 +134,10 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_7(self):
         stack_set_up = [
-            "0E1",
-            "0B7",
-            "1E2",
-            "1B2"
+            "0E1U",
+            "0B7U",
+            "1E2U",
+            "1B2U"
         ]
         opcodes_list = ["7P0N", "00", "2", "11", "8"]
 
@@ -148,12 +148,12 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_8(self):
         stack_set_up = [
-            "0E1",
-            "0B7",
-            "0C1",
-            "0O2",
-            "1E2",
-            "1B2",
+            "0E1U",
+            "0B7U",
+            "0C1U",
+            "0O2U",
+            "1E2U",
+            "1B2U",
             "2"
         ]
         opcodes_list = ["00", "7CNB&P0N", "12", "00", "8", "2"]
@@ -167,11 +167,11 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_9(self):
         stack_set_up = [
-            "0E1",
-            "0C1",
-            "0O2",
-            "1E2",
-            "1B2",
+            "0E1U",
+            "0C1U",
+            "0O2U",
+            "1E2U",
+            "1B2U",
             "2"
         ]
         opcodes_list = ["00", "7CNB&P0N", "12", "00", "8", "2"]
@@ -186,12 +186,12 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_10(self):
         stack_set_up = [
-            "0E1",
-            "0C1",
-            "0O2",
-            "1E2",
-            "1B2",
-            "2E12"
+            "0E1U",
+            "0C1U",
+            "0O2U",
+            "1E2U",
+            "1B2U",
+            "2E12U"
         ]
         opcodes_list = ["3P2N", "02", "10", "4", "00", "11", "5"]
         vm = VirtualMachine(opcodes_list, stack_set_up)
@@ -202,9 +202,9 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_11(self):
         stack_set_up = [
-            "0E1",
-            "0C1",
-            "0E7",
+            "0E1U",
+            "0C1U",
+            "0E7U",
             "1",
             "2"
         ]
@@ -217,9 +217,9 @@ class TestLogicDecoder(unittest.TestCase):
 
     def test_12(self):
         stack_set_up = [
-            "0E1",
-            "0C1",
-            "0E7",
+            "0E1U",
+            "0C1U",
+            "0E7U",
             "1",
             "2"
         ]
@@ -227,9 +227,29 @@ class TestLogicDecoder(unittest.TestCase):
                         "7P0N", "00", "2", "12", "8", "5"]
         vm = VirtualMachine(opcodes_list, stack_set_up)
         vm.run()
-        vm.show_machine_status()
+        # vm.show_machine_status()
 
         self.assertEqual(vm.stacks[0], [])
+        self.assertEqual(vm.error_code, 0)
+
+    def test_13(self):
+        stack_set_up = [
+            "0E1D",
+            "0C1D",
+            "0E7D",
+            "1",
+        ]
+        opcodes_list = ["7P0N", "00", "2", "11", "8", "7P1N", "01", "10", "8"
+                        ]
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        vm.show_machine_status()
+        print("-------------")
+        vm.run()
+        vm.show_machine_status()
+
+        for c in vm.stacks[0]:
+            self.assertEqual(c.position, Position.FACE_UP)
+        self.assertEqual(vm.stacks[1], [])
         self.assertEqual(vm.error_code, 0)
 
 
