@@ -30,6 +30,7 @@ class VirtualMachine():
         # 4 == LOGIC CONDITION ERROR
         # 5 == FACE_DOWN_CARD_LOGIC_ERROR
         self.error_code = 0
+        self.last_opcode_address = 0  # useful to show the error in code
 
     def decode_logical_condition(self, logic_cond):
         log_dec = ""
@@ -295,6 +296,7 @@ class VirtualMachine():
 
     def execute_instruction(self):
         inst_type = self.opcodes[self.pc][0]
+        self.last_opcode_address = self.pc
         # decoding instructions
         if inst_type == "0":
             self.take_card()
@@ -330,6 +332,8 @@ class VirtualMachine():
 
         if self.error_code != 0:
             # showing error
+            print("Error in instruction {} - Address: {}",
+                  format(self.opcodes[self.last_opcode_address], self.last_opcode_address))
             if self.error_code == 1:
                 print("ERROR CODE 1 - FULL_HAND_ERROR")
             elif self.error_code == 2:
