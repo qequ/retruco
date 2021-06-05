@@ -159,13 +159,13 @@ class TestLogicDecoder(unittest.TestCase):
         opcodes_list = ["00", "7CNB&P0N", "12", "00", "8", "2"]
         vm = VirtualMachine(opcodes_list, stack_set_up)
         vm.run()
-        vm.show_machine_status()
+        # vm.show_machine_status()
         self.assertEqual(len(vm.stacks[0]), 1)
         self.assertEqual(vm.hand.type, "B")
         self.assertEqual(vm.hand.value, 7)
         self.assertEqual(vm.error_code, 0)
 
-    def test_8(self):
+    def test_9(self):
         stack_set_up = [
             "0E1",
             "0C1",
@@ -177,11 +177,59 @@ class TestLogicDecoder(unittest.TestCase):
         opcodes_list = ["00", "7CNB&P0N", "12", "00", "8", "2"]
         vm = VirtualMachine(opcodes_list, stack_set_up)
         vm.run()
-        vm.show_machine_status()
+        # vm.show_machine_status()
         self.assertEqual(len(vm.stacks[0]), 0)
         self.assertEqual(vm.hand.type, "E")
         self.assertEqual(vm.hand.value, 1)
 
+        self.assertEqual(vm.error_code, 0)
+
+    def test_10(self):
+        stack_set_up = [
+            "0E1",
+            "0C1",
+            "0O2",
+            "1E2",
+            "1B2",
+            "2E12"
+        ]
+        opcodes_list = ["3P2N", "02", "10", "4", "00", "11", "5"]
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        vm.run()
+        # vm.show_machine_status()
+
+        self.assertEqual(vm.error_code, 0)
+
+    def test_11(self):
+        stack_set_up = [
+            "0E1",
+            "0C1",
+            "0E7",
+            "1",
+            "2"
+        ]
+        opcodes_list = ["7P0N", "00", "3CEE", "12", "4", "11", "5", "8"]
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        vm.run()
+        # vm.show_machine_status()
+
+        self.assertEqual(vm.error_code, 0)
+
+    def test_12(self):
+        stack_set_up = [
+            "0E1",
+            "0C1",
+            "0E7",
+            "1",
+            "2"
+        ]
+        opcodes_list = ["3P1N", "01", "12", "4",
+                        "7P0N", "00", "2", "12", "8", "5"]
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        vm.run()
+        vm.show_machine_status()
+
+        self.assertEqual(vm.stacks[0], [])
         self.assertEqual(vm.error_code, 0)
 
 
