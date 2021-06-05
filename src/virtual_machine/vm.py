@@ -12,8 +12,13 @@ class VirtualMachine():
         self.opcodes = opcodes
         self.stacks_opcodes = stacks_opcodes
         self.pc = 0  # starting the program at the beginning of the opcodes list
+        # while opcode helper structures
         self.whilestack = []  # will keep an address stack to return
         self.endwhilestack = []  # address stack to jump when while ends
+        # if opcode helper structures
+        self.ifflags = []
+        self.elsestack = []
+        self.endifstack = []
         self.stacks = []  # will contain the stacks of cards
         self.hand = None  # the card that UCP holds in it hand
         # if any problem occurs during instructions execution this flag
@@ -169,6 +174,50 @@ class VirtualMachine():
         # branching to the while again
         self.pc = self.whilestack[-1]
 
+    def if_decode(self):
+
+        nested_level = 1
+        address = self.pc
+
+        while nested_level != 0:
+            # looking for the if's else and endif opcodes' addresses
+            address += 1
+
+            if self.opcodes[address][0] == "3":
+                # nested if
+                nested_level += 1
+
+            elif self.opcodes[address][0] == "4" and nested_level == 1:
+                # the else of the if
+                self.elsestack.append(address)
+
+            elif self.opcodes[address][0] == "5":
+                if nested_level == 1:
+                    self.endifstack.append(address)
+                nested_level -= 1
+
+        # at the top of the stacks its the else and endwhile addresses of this
+        # if opcode
+        eval_bool = self.eval_condition((self.opcodes[self.pc])[1:])
+
+        if eval_bool:
+            self.pc += 1
+            self.ifflags.append(True)
+        else:
+            self.pc = self.elsestack[-1]
+            self.ifflags.append(False)
+
+    def else_decode(self):
+        if self.ifflags[-1]:
+            self.pc = self.endifstack[-1]
+        else:
+            self.pc += 1
+
+    def endif_decode(self):
+        self.ifflags.pop()
+        self.elsestack.pop()
+        self.pc += 1
+
     def load_stacks(self):
         """
         Precondition: there are no repeated cards - the compiler must
@@ -252,6 +301,12 @@ class VirtualMachine():
         elif inst_type == "2":
             self.invert_hand_card()
             self.pc += 1
+        elif inst_type == "3":
+            self.if_decode()
+        elif inst_type == "4":
+            self.else_decode()
+        elif inst_type == "5":
+            self.endif_decode()
         elif inst_type == "7":
             self.while_decode()
         elif inst_type == "8":
