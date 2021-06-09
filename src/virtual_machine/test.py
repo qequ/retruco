@@ -243,7 +243,7 @@ class TestLogicDecoder(unittest.TestCase):
                         ]
         vm = VirtualMachine(opcodes_list, stack_set_up)
         vm.show_machine_status()
-        print("-------------")
+        #print("-------------")
         vm.run()
         vm.show_machine_status()
 
@@ -252,6 +252,19 @@ class TestLogicDecoder(unittest.TestCase):
         self.assertEqual(vm.stacks[1], [])
         self.assertEqual(vm.error_code, 0)
 
+    def test_14(self):
+        stack_set_up =['0', '0E1U', '0O1U', '0B1D', '0C1D', '1', '1E2U']
+
+        opcodes_list = ['01', '2', '10']
+
+        vm = VirtualMachine(opcodes_list, stack_set_up)
+        #vm.show_machine_status()
+        #print("-------------")
+        vm.run()
+        #vm.show_machine_status()
+
+        self.assertEqual(vm.stacks[1], [])
+        self.assertEqual(vm.error_code, 0)
 
 if __name__ == '__main__':
     unittest.main()
