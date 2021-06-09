@@ -1,4 +1,4 @@
-from cards import Card, Position
+from .cards import Card, Position
 
 
 class VirtualMachine():
