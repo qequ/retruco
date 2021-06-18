@@ -245,38 +245,44 @@ class Retruco(tk.Tk):
 
             # proposition about card's value with the top of a stack
             frm_stack_value = tk.Frame(master=new_window)
+            if len(self.stacks_names) != 0:
 
-            msg1 = tk.Label(master=frm_stack_value, text="LA CARTA")
-            msg2 = tk.Label(master=frm_stack_value,
-                            text="QUE VALOR QUE TOPE DE PILA")
+                msg1 = tk.Label(master=frm_stack_value, text="LA CARTA")
+                msg2 = tk.Label(master=frm_stack_value,
+                                text="QUE VALOR QUE TOPE DE PILA")
 
-            e2_stack_value_var = tk.StringVar(master=frm_stack_value)
-            e2_stack_value_var.set(e2[0])
-            op_menu_e2_stack_value = tk.OptionMenu(
-                frm_stack_value, e2_stack_value_var, *e2)
+                e2_stack_value_var = tk.StringVar(master=frm_stack_value)
+                e2_stack_value_var.set(e2[0])
+                op_menu_e2_stack_value = tk.OptionMenu(
+                    frm_stack_value, e2_stack_value_var, *e2)
 
-            num_comp_stack_value_var = tk.StringVar(master=frm_stack_value)
-            num_comp_stack_value_var.set(numeric_comp[0])
-            op_menu_num_comp_stack_value = tk.OptionMenu(
-                frm_stack_value, num_comp_stack_value_var, *numeric_comp)
+                num_comp_stack_value_var = tk.StringVar(master=frm_stack_value)
+                num_comp_stack_value_var.set(numeric_comp[0])
+                op_menu_num_comp_stack_value = tk.OptionMenu(
+                    frm_stack_value, num_comp_stack_value_var, *numeric_comp)
 
-            stack_names_stack_value_var = tk.StringVar(master=frm_stack_value)
-            stack_names_stack_value_var.set(self.stacks_names[0])
-            op_menu_stack_names_stack_value = tk.OptionMenu(
-                frm_stack_value, stack_names_stack_value_var, *self.stacks_names)
+                stack_names_stack_value_var = tk.StringVar(
+                    master=frm_stack_value)
+                stack_names_stack_value_var.set(self.stacks_names[0])
+                op_menu_stack_names_stack_value = tk.OptionMenu(
+                    frm_stack_value, stack_names_stack_value_var, *self.stacks_names)
 
-            btn_stack_value = tk.Button(
-                master=frm_stack_value,
-                command=lambda: update_proposition(self, "C"+e2_stack_value_var.get()[0]+num_comp_stack_value_var.get(
-                )+"P"+str(self.stacks_names.index(stack_names_stack_value_var.get()))),
-                text="Agregar")
+                btn_stack_value = tk.Button(
+                    master=frm_stack_value,
+                    command=lambda: update_proposition(self, "C"+e2_stack_value_var.get()[0]+num_comp_stack_value_var.get(
+                    )+"P"+str(self.stacks_names.index(stack_names_stack_value_var.get()))),
+                    text="Agregar")
 
-            msg1.grid(row=0, column=0)
-            op_menu_e2_stack_value.grid(row=0, column=1)
-            op_menu_num_comp_stack_value.grid(row=0, column=2)
-            msg2.grid(row=0, column=3)
-            op_menu_stack_names_stack_value.grid(row=0, column=4)
-            btn_stack_value.grid(row=0, column=5)
+                msg1.grid(row=0, column=0)
+                op_menu_e2_stack_value.grid(row=0, column=1)
+                op_menu_num_comp_stack_value.grid(row=0, column=2)
+                msg2.grid(row=0, column=3)
+                op_menu_stack_names_stack_value.grid(row=0, column=4)
+                btn_stack_value.grid(row=0, column=5)
+            else:
+                l3 = tk.Label(
+                    master=frm_stack_value, text="No hay pilas con las que formar una proposición")
+                l3.pack()
 
             # packing all the frames of template propositions
             frm_pila.pack()
