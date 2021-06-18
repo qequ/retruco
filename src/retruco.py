@@ -29,7 +29,7 @@ class Retruco(tk.Tk):
         self.btn_invert = tk.Button(
             self.fr_buttons, text="INVERTIR", command=lambda: add_opcode(self, 2, None))
         self.btn_if = tk.Button(
-            self.fr_buttons, text="SI", command=lambda: 1)
+            self.fr_buttons, text="SI", command=lambda: form_proposition(self, 3))
         self.btn_else = tk.Button(
             self.fr_buttons, text="SINO", command=lambda: 1)
         self.btn_endif = tk.Button(
@@ -63,6 +63,7 @@ class Retruco(tk.Tk):
         self.opcodes = []
         self.stacks_opcodes = []
         self.stacks_names = []
+        self.proposition = ""
 
         def select_stack(self, message, type_op):
             new_window = tk.Toplevel(self)
@@ -86,6 +87,204 @@ class Retruco(tk.Tk):
                 msg_lbl.pack()
                 stacks_op.pack()
                 btn_ok.pack()
+
+        def update_proposition(self, append_string):
+            self.proposition += append_string
+            print(self.proposition)
+
+        def form_proposition(self, type_op):
+            new_window = tk.Toplevel(self)
+            new_window.geometry("800x600")
+            self.proposition = ""
+            print("reset propos: {}".format(self.proposition))
+
+            e1 = ["ESTÁ", "NO ESTÁ"]
+            e2 = ["ES", "NO ES"]
+            palos = ["ORO", "BASTO", "ESPADA", "COPA"]
+            numeric_comp = ["!=", "=", "<", ">", "<=", ">="]
+            card_values = [str(i) for i in range(1, 8)] + \
+                [str(i) for i in range(10, 13)]
+
+            # lists of propositions
+
+            # frame of stacks propositions
+            frm_pila = tk.Frame(master=new_window)
+            if len(self.stacks_names) != 0:
+                msg1 = tk.Label(master=frm_pila, text="LA PILA")
+                msg2 = tk.Label(master=frm_pila, text="VACIA")
+                e1_var = tk.StringVar(frm_pila)
+                e1_var.set(e1[0])
+                op_menu1 = tk.OptionMenu(frm_pila, e1_var, *e1)
+                stack_var = tk.StringVar(frm_pila)
+                stack_var.set(self.stacks_names[0])
+                stacks_op = tk.OptionMenu(
+                    frm_pila, stack_var, *self.stacks_names)
+                btn1 = tk.Button(master=frm_pila, command=lambda: update_proposition(self,
+                                                                                     "P" + str(self.stacks_names.index(stack_var.get())) + e1_var.get()[0]),
+                                 text="Agregar")
+
+                msg1.grid(row=0, column=0)
+                stacks_op.grid(row=0, column=1)
+                op_menu1.grid(row=0, column=2)
+                msg2.grid(row=0, column=3)
+                btn1.grid(row=0, column=4)
+            else:
+                l1 = tk.Label(master=frm_pila,
+                              text="No hay pilas con las que formar una proposición")
+                l1.pack()
+
+            # position of the card proposition
+            frm_pos_card = tk.Frame(master=new_window)
+            msg1 = tk.Label(master=frm_pos_card, text="LA CARTA")
+            msg2 = tk.Label(master=frm_pos_card, text="BOCA ABAJO")
+            e1_var_card_pos = tk.StringVar(frm_pos_card)
+            e1_var_card_pos.set(e1[0])
+            op_menu1_pos_card = tk.OptionMenu(
+                frm_pos_card, e1_var_card_pos, *e1)
+            btn1_cp = tk.Button(master=frm_pos_card, command=lambda: update_proposition(self,
+                                                                                        "C" +
+                                                                                        e1_var_card_pos.get()[
+                                                                                            0]+"F",
+                                                                                        ),
+                                text="Agregar")
+
+            msg1.grid(row=0, column=0)
+            op_menu1_pos_card.grid(row=0, column=1)
+            msg2.grid(row=0, column=2)
+            btn1_cp.grid(row=0, column=3, pady=5)
+
+            # proposition about card's palo
+            frm_palo = tk.Frame(master=new_window)
+            msg1 = tk.Label(master=frm_palo, text="LA CARTA")
+            msg2 = tk.Label(master=frm_palo, text="DEL PALO")
+            e2_var_card_palo = tk.StringVar(frm_palo)
+            e2_var_card_palo.set(e2[0])
+            op_menu2_palo_card = tk.OptionMenu(
+                frm_palo, e2_var_card_palo, *e2)
+            palos_var = tk.StringVar(master=frm_palo)
+            palos_var.set(palos[0])
+            op_menu_palos = tk.OptionMenu(frm_palo, palos_var, *palos)
+            btn1_palo_c = tk.Button(master=frm_palo, command=lambda: update_proposition(self,
+                                                                                        "C"+e2_var_card_palo.get()[0]+palos_var.get()[0]),
+                                    text="Agregar")
+
+            msg1.grid(row=0, column=0)
+            op_menu2_palo_card.grid(row=0, column=1)
+            msg2.grid(row=0, column=2)
+            op_menu_palos.grid(row=0, column=3)
+            btn1_palo_c.grid(row=0, column=4, pady=5)
+
+            # proposition about card's palo compared with the top of stack
+
+            frm_palo_stack = tk.Frame(master=new_window)
+
+            if len(self.stacks_names) != 0:
+                msg1 = tk.Label(master=frm_palo_stack, text="LA CARTA")
+                msg2 = tk.Label(master=frm_palo_stack,
+                                text="DE IGUAL PALO QUE TOPE DE PILA")
+
+                e2_palo_stack_var = tk.StringVar(master=frm_palo_stack)
+                e2_palo_stack_var.set(e2[0])
+                op_menu_e2_stack_palo = tk.OptionMenu(
+                    frm_palo_stack, e2_palo_stack_var, *e2)
+
+                stack_palo_var = tk.StringVar(master=frm_palo_stack)
+                stack_palo_var.set(self.stacks_names[0])
+                op_menu_stacks_names_palo = tk.OptionMenu(
+                    frm_palo_stack, stack_palo_var, *self.stacks_names)
+
+                btn_palo_stack = tk.Button(
+                    master=frm_palo_stack,
+                    command=lambda: update_proposition(
+                        self, "C"+e2_palo_stack_var.get()[0]+"P" + str(self.stacks_names.index(stack_palo_var.get()))),
+                    text="Agregar")
+
+                msg1.grid(row=0, column=0)
+                op_menu_e2_stack_palo.grid(row=0, column=1)
+                msg2.grid(row=0, column=2)
+                op_menu_stacks_names_palo.grid(row=0, column=3)
+                btn_palo_stack.grid(row=0, column=4, pady=5)
+            else:
+                l2 = tk.Label(
+                    master=frm_palo_stack, text="No hay pilas con las que formar una proposición")
+                l2.pack()
+
+            # propositions about comparing the card value with a number
+            frm_value = tk.Frame(master=new_window)
+
+            msg1 = tk.Label(master=frm_value, text="LA CARTA")
+            msg2 = tk.Label(master=frm_value, text="DE VALOR")
+
+            e2_value_var = tk.StringVar(master=frm_value)
+            e2_value_var.set(e2[0])
+            op_menu_e2_value = tk.OptionMenu(
+                frm_value, e2_value_var, *e2)
+
+            num_comp_var = tk.StringVar(master=frm_value)
+            num_comp_var.set(numeric_comp[0])
+            op_menu_num_comp_value = tk.OptionMenu(
+                frm_value, num_comp_var, *numeric_comp)
+
+            num_var = tk.StringVar(master=new_window)
+            num_var.set(card_values[0])
+            op_menu_number_values = tk.OptionMenu(
+                frm_value, num_var, *card_values)
+
+            btn_value = tk.Button(
+                master=frm_value,
+                command=lambda: update_proposition(self,
+                                                   "C"+e2_value_var.get()[0]+num_comp_var.get()+num_var.get()),
+                text="Agregar")
+
+            msg1.grid(row=0, column=0)
+            op_menu_e2_value.grid(row=0, column=1)
+            msg2.grid(row=0, column=2)
+            op_menu_num_comp_value.grid(row=0, column=3)
+            op_menu_number_values.grid(row=0, column=4)
+            btn_value.grid(row=0, column=5)
+
+            # proposition about card's value with the top of a stack
+            frm_stack_value = tk.Frame(master=new_window)
+
+            msg1 = tk.Label(master=frm_stack_value, text="LA CARTA")
+            msg2 = tk.Label(master=frm_stack_value,
+                            text="QUE VALOR QUE TOPE DE PILA")
+
+            e2_stack_value_var = tk.StringVar(master=frm_stack_value)
+            e2_stack_value_var.set(e2[0])
+            op_menu_e2_stack_value = tk.OptionMenu(
+                frm_stack_value, e2_stack_value_var, *e2)
+
+            num_comp_stack_value_var = tk.StringVar(master=frm_stack_value)
+            num_comp_stack_value_var.set(numeric_comp[0])
+            op_menu_num_comp_stack_value = tk.OptionMenu(
+                frm_stack_value, num_comp_stack_value_var, *numeric_comp)
+
+            stack_names_stack_value_var = tk.StringVar(master=frm_stack_value)
+            stack_names_stack_value_var.set(self.stacks_names[0])
+            op_menu_stack_names_stack_value = tk.OptionMenu(
+                frm_stack_value, stack_names_stack_value_var, *self.stacks_names)
+
+            btn_stack_value = tk.Button(
+                master=frm_stack_value,
+                command=lambda: update_proposition(self, "C"+e2_stack_value_var.get()[0]+num_comp_stack_value_var.get(
+                )+"P"+str(self.stacks_names.index(stack_names_stack_value_var.get()))),
+                text="Agregar")
+
+            msg1.grid(row=0, column=0)
+            op_menu_e2_stack_value.grid(row=0, column=1)
+            op_menu_num_comp_stack_value.grid(row=0, column=2)
+            msg2.grid(row=0, column=3)
+            op_menu_stack_names_stack_value.grid(row=0, column=4)
+            btn_stack_value.grid(row=0, column=5)
+
+            # packing all the frames of template propositions
+            frm_pila.pack()
+            frm_pos_card.pack()
+            frm_palo.pack()
+            frm_palo_stack.pack()
+            frm_value.pack()
+            frm_stack_value.pack()
 
         def add_opcode(self, type_op, stack_name):
             if type_op == 0:
