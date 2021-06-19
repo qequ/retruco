@@ -35,9 +35,9 @@ class Retruco(tk.Tk):
         self.btn_endif = tk.Button(
             self.fr_buttons, text="NADA MAS", command=lambda: add_opcode(self, 5))
         self.btn_while = tk.Button(
-            self.fr_buttons, text="MIENTRAS", command=lambda: 1)
+            self.fr_buttons, text="MIENTRAS", command=lambda: form_proposition(self, 7))
         self.btn_endwhile = tk.Button(
-            self.fr_buttons, text="REPITA", command=lambda: 1)
+            self.fr_buttons, text="REPITA", command=lambda: add_opcode(self, 8))
         self.btn_add_stack = tk.Button(
             self.fr_buttons, text="AÑADIR PILA", command=lambda: add_stack(self))
         self.btn_add_card = tk.Button(
@@ -329,7 +329,7 @@ class Retruco(tk.Tk):
 
             # button to form the opcode
             btn_add_opcode = tk.Button(master=new_window, command=lambda: add_opcode(
-                self, 3, None, self.encoded_proposition, self.proposition.get()), text="Confirmar")
+                self, type_op, None, self.encoded_proposition, self.proposition.get()), text="Confirmar")
 
             # packing all the frames of template propositions
             frm_pila.pack()
@@ -386,6 +386,20 @@ class Retruco(tk.Tk):
                 self.ucp_instructions.config(state=tk.NORMAL)
                 self.ucp_instructions.insert(
                     tk.END, "NADA MAS\n")
+                self.ucp_instructions.config(state=tk.DISABLED)
+
+            elif type_op == 7 and opcode_append != "":
+                self.opcodes.append("7" + opcode_append)
+                self.ucp_instructions.config(state=tk.NORMAL)
+                self.ucp_instructions.insert(
+                    tk.END, "MIENTRAS {}\n".format(additional_string))
+                self.ucp_instructions.config(state=tk.DISABLED)
+
+            elif type_op == 8:
+                self.opcodes.append("8")
+                self.ucp_instructions.config(state=tk.NORMAL)
+                self.ucp_instructions.insert(
+                    tk.END, "REPITA\n")
                 self.ucp_instructions.config(state=tk.DISABLED)
 
             print(self.opcodes)
