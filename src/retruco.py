@@ -31,9 +31,9 @@ class Retruco(tk.Tk):
         self.btn_if = tk.Button(
             self.fr_buttons, text="SI", command=lambda: form_proposition(self, 3))
         self.btn_else = tk.Button(
-            self.fr_buttons, text="SINO", command=lambda: 1)
+            self.fr_buttons, text="SINO", command=lambda: add_opcode(self, 4))
         self.btn_endif = tk.Button(
-            self.fr_buttons, text="NADA MAS", command=lambda: 1)
+            self.fr_buttons, text="NADA MAS", command=lambda: add_opcode(self, 5))
         self.btn_while = tk.Button(
             self.fr_buttons, text="MIENTRAS", command=lambda: 1)
         self.btn_endwhile = tk.Button(
@@ -63,7 +63,8 @@ class Retruco(tk.Tk):
         self.opcodes = []
         self.stacks_opcodes = []
         self.stacks_names = []
-        self.proposition = ""
+        self.encoded_proposition = ""
+        self.proposition = tk.StringVar()  # text for the user
 
         def select_stack(self, message, type_op):
             new_window = tk.Toplevel(self)
@@ -88,15 +89,27 @@ class Retruco(tk.Tk):
                 stacks_op.pack()
                 btn_ok.pack()
 
-        def update_proposition(self, append_string):
-            self.proposition += append_string
+        def update_proposition(self, append_string, propos_text):
+            # TODO: refactor this piece of logic
+            if append_string == "&" or append_string == "|":
+                if self.encoded_proposition.endswith("&") or self.encoded_proposition.endswith("|") or self.encoded_proposition == "":
+                    return
+                self.encoded_proposition += append_string
+                self.proposition.set(self.proposition.get() + propos_text)
+            else:
+                if self.encoded_proposition.endswith("&") or self.encoded_proposition.endswith("|") or self.encoded_proposition == "":
+                    self.encoded_proposition += append_string
+                    self.proposition.set(self.proposition.get() + propos_text)
+
             print(self.proposition)
+            print(self.encoded_proposition)
 
         def form_proposition(self, type_op):
             new_window = tk.Toplevel(self)
-            new_window.geometry("800x600")
-            self.proposition = ""
-            print("reset propos: {}".format(self.proposition))
+            new_window.geometry("800x300")
+            self.encoded_proposition = ""
+            self.proposition.set("")
+            print("reset propos: {}".format(self.encoded_proposition))
 
             e1 = ["ESTÁ", "NO ESTÁ"]
             e2 = ["ES", "NO ES"]
@@ -120,7 +133,10 @@ class Retruco(tk.Tk):
                 stacks_op = tk.OptionMenu(
                     frm_pila, stack_var, *self.stacks_names)
                 btn1 = tk.Button(master=frm_pila, command=lambda: update_proposition(self,
-                                                                                     "P" + str(self.stacks_names.index(stack_var.get())) + e1_var.get()[0]),
+                                                                                     "P" +
+                                                                                     str(self.stacks_names.index(
+                                                                                         stack_var.get())) + e1_var.get()[0],
+                                                                                     "LA PILA "+stack_var.get()+" "+e1_var.get()+" VACIA"),
                                  text="Agregar")
 
                 msg1.grid(row=0, column=0)
@@ -145,6 +161,7 @@ class Retruco(tk.Tk):
                                                                                         "C" +
                                                                                         e1_var_card_pos.get()[
                                                                                             0]+"F",
+                                                                                        "LA CARTA "+e1_var_card_pos.get()+" BOCA ABAJO"
                                                                                         ),
                                 text="Agregar")
 
@@ -165,7 +182,10 @@ class Retruco(tk.Tk):
             palos_var.set(palos[0])
             op_menu_palos = tk.OptionMenu(frm_palo, palos_var, *palos)
             btn1_palo_c = tk.Button(master=frm_palo, command=lambda: update_proposition(self,
-                                                                                        "C"+e2_var_card_palo.get()[0]+palos_var.get()[0]),
+                                                                                        "C" +
+                                                                                        e2_var_card_palo.get()[
+                                                                                            0]+palos_var.get()[0],
+                                                                                        "LA CARTA " + e2_var_card_palo.get()+" DEL PALO "+palos_var.get()),
                                     text="Agregar")
 
             msg1.grid(row=0, column=0)
@@ -196,7 +216,10 @@ class Retruco(tk.Tk):
                 btn_palo_stack = tk.Button(
                     master=frm_palo_stack,
                     command=lambda: update_proposition(
-                        self, "C"+e2_palo_stack_var.get()[0]+"P" + str(self.stacks_names.index(stack_palo_var.get()))),
+                        self, "C" +
+                        e2_palo_stack_var.get()[
+                            0]+"P" + str(self.stacks_names.index(stack_palo_var.get())),
+                        "LA CARTA " + e2_palo_stack_var.get() + " DE IGUAL PALO QUE TOPE DE PILA "+stack_palo_var.get()),
                     text="Agregar")
 
                 msg1.grid(row=0, column=0)
@@ -233,7 +256,11 @@ class Retruco(tk.Tk):
             btn_value = tk.Button(
                 master=frm_value,
                 command=lambda: update_proposition(self,
-                                                   "C"+e2_value_var.get()[0]+num_comp_var.get()+num_var.get()),
+                                                   "C" +
+                                                   e2_value_var.get()[
+                                                       0]+num_comp_var.get()+num_var.get(),
+                                                   "LA CARTA "+e2_value_var.get()+" DE VALOR "+num_comp_var.get()+" "+num_var.get()),
+
                 text="Agregar")
 
             msg1.grid(row=0, column=0)
@@ -270,7 +297,8 @@ class Retruco(tk.Tk):
                 btn_stack_value = tk.Button(
                     master=frm_stack_value,
                     command=lambda: update_proposition(self, "C"+e2_stack_value_var.get()[0]+num_comp_stack_value_var.get(
-                    )+"P"+str(self.stacks_names.index(stack_names_stack_value_var.get()))),
+                    )+"P"+str(self.stacks_names.index(stack_names_stack_value_var.get())),
+                        "LA CARTA "+e2_stack_value_var.get() + " DE "+num_comp_stack_value_var.get()+" VALOR QUE TOPE DE PILA "+stack_names_stack_value_var.get()),
                     text="Agregar")
 
                 msg1.grid(row=0, column=0)
@@ -284,6 +312,25 @@ class Retruco(tk.Tk):
                     master=frm_stack_value, text="No hay pilas con las que formar una proposición")
                 l3.pack()
 
+            # buttons for Y and O (conjunction and disjunction)
+            frm_button = tk.Frame(master=new_window)
+            button_y = tk.Button(
+                master=frm_button, command=lambda: update_proposition(self, "&", " Y "), text="Y")
+            button_o = tk.Button(
+                master=frm_button, command=lambda: update_proposition(self, "|", " O "), text="O")
+
+            button_y.grid(row=0, column=0)
+            button_o.grid(row=0, column=1)
+
+            # frame to show how is the proposition
+            frm_propos = tk.Frame(master=new_window)
+            l4 = tk.Label(master=frm_propos, textvariable=self.proposition)
+            l4.pack()
+
+            # button to form the opcode
+            btn_add_opcode = tk.Button(master=new_window, command=lambda: add_opcode(
+                self, 3, None, self.encoded_proposition, self.proposition.get()), text="Confirmar")
+
             # packing all the frames of template propositions
             frm_pila.pack()
             frm_pos_card.pack()
@@ -291,8 +338,11 @@ class Retruco(tk.Tk):
             frm_palo_stack.pack()
             frm_value.pack()
             frm_stack_value.pack()
+            frm_button.pack()
+            frm_propos.pack()
+            btn_add_opcode.pack()
 
-        def add_opcode(self, type_op, stack_name):
+        def add_opcode(self, type_op, stack_name=None, opcode_append="", additional_string=""):
             if type_op == 0:
                 self.opcodes.append(
                     "0" + str(self.stacks_names.index(stack_name)))
@@ -315,6 +365,27 @@ class Retruco(tk.Tk):
                 self.ucp_instructions.config(state=tk.NORMAL)
                 self.ucp_instructions.insert(
                     tk.END, "INVIERTA LA CARTA\n")
+                self.ucp_instructions.config(state=tk.DISABLED)
+
+            elif type_op == 3 and opcode_append != "":
+                self.opcodes.append("3" + opcode_append)
+                self.ucp_instructions.config(state=tk.NORMAL)
+                self.ucp_instructions.insert(
+                    tk.END, "SI {}\n".format(additional_string))
+                self.ucp_instructions.config(state=tk.DISABLED)
+
+            elif type_op == 4:
+                self.opcodes.append("4")
+                self.ucp_instructions.config(state=tk.NORMAL)
+                self.ucp_instructions.insert(
+                    tk.END, "SINO\n")
+                self.ucp_instructions.config(state=tk.DISABLED)
+
+            elif type_op == 5:
+                self.opcodes.append("5")
+                self.ucp_instructions.config(state=tk.NORMAL)
+                self.ucp_instructions.insert(
+                    tk.END, "NADA MAS\n")
                 self.ucp_instructions.config(state=tk.DISABLED)
 
             print(self.opcodes)
