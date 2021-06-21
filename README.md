@@ -1,7 +1,3 @@
-![ucp](imgs/ucp.png "UCP")
-
-# ucp
-
 # Retruco
 A virtual machine and interpreter for the [TIMBA](http://dirinfo.unsl.edu.ar/servicios/abm/assets/uploads/materiales/ddafb-timba-2018.pdf) language.
 
@@ -22,7 +18,7 @@ python retruco.py
 ```
 
 # TODO
-- [] A setup script
+- [ ] A setup script
 
 # License
 MIT License Copyright (c) 2021 Alvaro Frias
