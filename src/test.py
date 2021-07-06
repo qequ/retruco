@@ -1,7 +1,7 @@
 import unittest
 from virtual_machine.vm import VirtualMachine
 from virtual_machine.cards import Position
-
+from syntax_checker import checker
 
 class TestLogicDecoder(unittest.TestCase):
 

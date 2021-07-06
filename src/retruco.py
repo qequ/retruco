@@ -1,4 +1,7 @@
 import tkinter as tk
+from syntax_checker import checker
+from virtual_machine.vm import VirtualMachine
+import tkinter.scrolledtext as scrolledtext
 
 
 class Retruco(tk.Tk):
@@ -42,6 +45,10 @@ class Retruco(tk.Tk):
             self.fr_buttons, text="AÑADIR PILA", command=lambda: add_stack(self))
         self.btn_add_card = tk.Button(
             self.fr_buttons, text="AÑADIR CARTA", command=lambda: add_card(self))
+        self.btn_run_program = tk.Button(
+            self.fr_buttons, text="CORRER", command=lambda: run_program(self))
+        self.btn_reset_all = tk.Button(
+            self.fr_buttons, text="BORRAR TODO", command=lambda: reset_all(self))
 
         # packing buttons
         self.btn_take.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
@@ -54,6 +61,10 @@ class Retruco(tk.Tk):
         self.btn_endwhile.grid(row=7, column=0, sticky="ew", padx=5, pady=5)
         self.btn_add_stack.grid(row=8,  column=0, sticky="ew", padx=5, pady=20)
         self.btn_add_card.grid(row=9,  column=0, sticky="ew", padx=5)
+        self.btn_run_program.grid(
+            row=10, column=0, sticky="ew", padx=5, pady=50)
+        self.btn_reset_all.grid(
+            row=11, column=0, sticky="ew", padx=5, pady=50)
 
         self.fr_buttons.grid(row=0, column=0, sticky="ns")
         self.ucp_instructions.grid(row=0, column=1, sticky="nsew")
@@ -65,6 +76,97 @@ class Retruco(tk.Tk):
         self.stacks_names = []
         self.encoded_proposition = ""
         self.proposition = tk.StringVar()  # text for the user
+        self.inst_counter = 0
+
+        def reset_all(self):
+            self.opcodes = []
+            self.stacks_opcodes = []
+            self.stacks_names = []
+            self.encoded_proposition = ""
+            self.proposition = tk.StringVar()  # text for the user
+            self.inst_counter = 0
+
+            self.ucp_instructions.config(state=tk.NORMAL)
+            self.ucp_instructions.delete("1.0", tk.END)
+            self.ucp_instructions.insert(
+                tk.END, "DEFINICION DE PROGRAMA\n")
+            self.ucp_instructions.config(state=tk.DISABLED)
+
+            self.stack_set_instruction.config(state=tk.NORMAL)
+            self.stack_set_instruction.delete("1.0", tk.END)
+            self.stack_set_instruction.insert(
+                tk.END, "UCP EJECUTE CON LAS SIGUIENTES CARTAS:\n")
+            self.stack_set_instruction.config(state=tk.DISABLED)
+
+        def execute_instruction_formatting(self, timba_machine, txt_widget):
+            if timba_machine.pc != len(timba_machine.opcodes) and timba_machine.error_code == 0:
+                # execute an instruction
+                timba_machine.execute_instruction()
+                timba_machine.update_machine_status()
+
+                # change vm stacks indexes for the names used bu the user
+
+                mach_list = timba_machine.machine_status.split("\n")
+                for i in range(len(mach_list)):
+                    if mach_list[i].startswith("PILA"):
+                        stack_index = int(
+                            mach_list[i][5:].strip())
+                        mach_list[i] = "PILA: " + \
+                            self.stacks_names[stack_index]
+
+                timba_machine.machine_status = "\n".join(mach_list)
+
+                txt_widget.insert(
+                    tk.END, "INSTRUCCIÓN: {}\n".format(timba_machine.pc-1))
+                txt_widget.insert(tk.END, timba_machine.machine_status)
+                txt_widget.insert(
+                    tk.END, "--------------------------------------\n")
+
+            elif timba_machine.error_code != 0:
+                # show error message
+                if timba_machine.error_code == 1:
+                    error_msg = "ERROR - LA MANO YA ESTÁ LLENA"
+                elif timba_machine.error_code == 2:
+                    error_msg = "ERROR - LA PILA ESTÁ VACÍA"
+                elif timba_machine.error_code == 3:
+                    error_msg = "ERROR - LA MANO ESTÁ VACÍA"
+                elif timba_machine.error_code == 4:
+                    error_msg = "ERROR - CONDICIÓN LÓGICA ERRONEA"
+                elif timba_machine.error_code == 5:
+                    error_msg = "ERROR - CARTA BOCA ABAJO"
+
+                txt_widget.insert(tk.END, error_msg+"\n")
+
+            else:
+                # program ended ok
+                txt_widget.insert(tk.END, "PROGRAMA TERMINADO CORRECTAMENTE\n")
+
+        def run_program(self):
+            new_window = tk.Toplevel(self)
+            new_window.geometry("400x300")
+
+            if checker(self.opcodes):
+                timba2000 = VirtualMachine(self.opcodes, self.stacks_opcodes)
+                timba2000.load_stacks()
+
+                main_frm = tk.Frame(new_window)
+                main_frm.pack()
+
+                btn_execute = tk.Button(
+                    main_frm,
+                    text="Execute instruction",
+                    command=lambda: execute_instruction_formatting(self, timba2000, txt_machine_status))
+                btn_execute.pack()
+
+                txt_machine_status = scrolledtext.ScrolledText(
+                    main_frm, undo=True)
+                txt_machine_status['font'] = ('consolas', '12')
+                txt_machine_status.pack(expand=True, fill='both')
+
+            else:
+                l_error = tk.Label(
+                    master=new_window, text="No se puede correr el programa\n Hay errores de sintaxis.")
+                l_error.pack()
 
         def select_stack(self, message, type_op):
             new_window = tk.Toplevel(self)
@@ -101,15 +203,11 @@ class Retruco(tk.Tk):
                     self.encoded_proposition += append_string
                     self.proposition.set(self.proposition.get() + propos_text)
 
-            print(self.proposition)
-            print(self.encoded_proposition)
-
         def form_proposition(self, type_op):
             new_window = tk.Toplevel(self)
             new_window.geometry("800x300")
             self.encoded_proposition = ""
             self.proposition.set("")
-            print("reset propos: {}".format(self.encoded_proposition))
 
             e1 = ["ESTÁ", "NO ESTÁ"]
             e2 = ["ES", "NO ES"]
@@ -343,6 +441,11 @@ class Retruco(tk.Tk):
             btn_add_opcode.pack()
 
         def add_opcode(self, type_op, stack_name=None, opcode_append="", additional_string=""):
+            self.ucp_instructions.config(state=tk.NORMAL)
+            self.ucp_instructions.insert(
+                tk.END, "{} ".format(self.inst_counter))
+            self.ucp_instructions.config(state=tk.DISABLED)
+
             if type_op == 0:
                 self.opcodes.append(
                     "0" + str(self.stacks_names.index(stack_name)))
@@ -402,7 +505,7 @@ class Retruco(tk.Tk):
                     tk.END, "REPITA\n")
                 self.ucp_instructions.config(state=tk.DISABLED)
 
-            print(self.opcodes)
+            self.inst_counter += 1
 
         def add_card(self):
             new_window = tk.Toplevel(self)
@@ -460,7 +563,6 @@ class Retruco(tk.Tk):
                 btn_ok.pack()
 
         def add_stack_opcode(self, stack_name, value_card, type_card, pos_card, lbl):
-            print(stack_name, type(value_card), type_card, pos_card)
 
             # check first if the card is being used in other stack
             opcodes_to_check = list(
@@ -490,7 +592,6 @@ class Retruco(tk.Tk):
             lbl.config(
                 text="La carta se añadió a la Pila {}".format(stack_name))
             self.stacks_opcodes.append(opcode)
-            print(self.stacks_opcodes)
             self.stack_set_instruction.config(state=tk.NORMAL)
             self.stack_set_instruction.insert(tk.END, "AÑADA {} DE {} {} A '{}'\n".format(
                 value_card, type_card, pos_card, stack_name))
