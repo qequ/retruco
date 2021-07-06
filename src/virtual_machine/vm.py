@@ -63,9 +63,16 @@ class VirtualMachine():
             elif changing_part[0] == "P":
                 stack_num = int(changing_part[1:])
 
+
                 if len(self.stacks[stack_num]) == 0:
                     self.error_code = 2
                     return False
+
+                if self.stacks[stack_num][-1].position == Position.FACE_DOWN:
+                    # the card at the top of the stack is face down
+                    self.error_code = 5
+                    return False
+
 
                 log_dec = "self.hand.type == self.stacks[{}][-1].type".format(
                     stack_num)
@@ -84,6 +91,11 @@ class VirtualMachine():
                     stack_num = int(changing_part[offset+1:])
                     if len(self.stacks[stack_num]) == 0:
                         self.error_code = 2
+                        return False
+
+                    if self.stacks[stack_num][-1].position == Position.FACE_DOWN:
+                        # the card at the top of the stack is face down
+                        self.error_code = 5
                         return False
 
                     log_dec = "self.hand.value {} self.stacks[{}][-1].value".format(
