@@ -31,6 +31,8 @@ class VirtualMachine():
         # 5 == FACE_DOWN_CARD_LOGIC_ERROR
         self.error_code = 0
         self.last_opcode_address = 0  # useful to show the error in code
+        # a string that contains information about the hand and the stacks
+        self.machine_status = ""
 
     def decode_logical_condition(self, logic_cond):
         log_dec = ""
@@ -320,7 +322,7 @@ class VirtualMachine():
 
     def run(self):
         """
-        Main loop of the virtual machine
+        Main loop of the virtual machine - used for debugging
         """
         self.load_stacks()
         while self.pc != len(self.opcodes):
@@ -351,15 +353,24 @@ class VirtualMachine():
         """
         prints the stacks and hand cards
         """
+        self.update_machine_status()
+        print(self.machine_status)
+
+    def update_machine_status(self):
+        """
+        update the machine_status variable
+        """
+        self.machine_status = ""
         count = 0
         for s in self.stacks:
-            print("STACK: {}".format(count))
+            self.machine_status += "PILA: {}\n".format(count)
             for c in s:
-                c.print_card()
+                self.machine_status += c.card_information()
             count += 1
 
-        print("HAND")
+        self.machine_status += "\n"
+        self.machine_status += "MANO\n"
         if self.hand != None:
-            self.hand.print_card()
+            self.machine_status += self.hand.card_information()
         else:
-            print("MANO VACIA")
+            self.machine_status += "MANO VACIA\n"

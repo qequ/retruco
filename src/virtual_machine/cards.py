@@ -25,6 +25,9 @@ class Card():
             self.position = Position.FACE_DOWN
 
     def print_card(self):
+        """
+        used for debugging
+        """
         if self.position == Position.FACE_DOWN:
             pos = "ABAJO"
         else:
@@ -40,3 +43,20 @@ class Card():
             type_card = "COPA"
 
         print("{} DE {} - BOCA {}".format(self.value, type_card, pos))
+
+    def card_information(self):
+        if self.position == Position.FACE_DOWN:
+            pos = "ABAJO"
+        else:
+            pos = "ARRIBA"
+
+        if self.type == "O":
+            type_card = "ORO"
+        elif self.type == "B":
+            type_card = "BASTO"
+        elif self.type == "E":
+            type_card = "ESPADA"
+        elif self.type == "C":
+            type_card = "COPA"
+
+        return "{} DE {} - BOCA {}\n".format(self.value, type_card, pos)
