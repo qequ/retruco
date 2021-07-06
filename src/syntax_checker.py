@@ -71,7 +71,6 @@ def checker(opcodes_list):
     op_stack = []  # an if cannot interrupt a while and viceversa
 
     for opc in format_l:
-        print(if_stack, else_stack, while_stack, op_stack)
         if opc == "3":
             if_stack.append(opc)
             op_stack.append(opc)
@@ -108,38 +107,3 @@ def checker(opcodes_list):
     if if_stack or else_stack or while_stack:
         return False
     return True
-
-
-"""
-tests = [
-    ["00", "3POE&CEF", "10", "4", "3", "4", "7",
-     "8", "5", "5", "7POE|CEF", "10", "2", "8"],
-
-    list(map(str, [3, 4, 5, 3, 7, 8, 4, 3, 4, 5, 5])),
-
-    list(map(str, [7, 3, 7, 3, 4, 5, 8, 4, 3, 4, 5, 5, 8])),
-
-    list(map(str, [7, 3, 7, 8, 4, 3, 4, 7, 8, 3, 4, 5, 5, 5, 8])),
-
-]
-
-for t in tests:
-    print("opcl={}".format(t))
-    assert checker(t)
-
-fail_tests = [
-    list(map(str, [4, 5, 8, 7])),
-
-    list(map(str, [7, 3, 7, 3, 4, 5, 8, 4, 3, 4, 5, 5, 5, 8])),
-    list(map(str, [7, 4, 3, 5, 8])),
-
-    list(map(str, [7, 3, 4, 5, 5, 8])),
-    list(map(str, [7, 3, 4, 8, 5])),
-
-
-
-]
-
-for t in fail_tests:
-    assert not checker(t)
-"""
