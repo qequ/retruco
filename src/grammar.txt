@@ -1,6 +1,6 @@
-programa ::=  <declaraciones> ; <proceso>
-<proceso> ::= DEFINICION DE PROGRAMA nl <sentencias>
-<sentencias> := <sentencia> | <sentencia> nl <sentencias>
+programa ::=  <declaraciones> ; nl* <proceso>
+<proceso> ::= DEFINICION DE PROGRAMA nl+ <sentencias>
+<sentencias> := <sentencia> | <sentencia> nl+ <sentencias>
 <sentencia> := <operativa> | <de control>
 <operativa> := <tomar> DE <pila> <nombre> | <depositar> EN <pila> <nombre> | <invertir>
 <tomar> := TOME UNA CARTA | TOME UNA | TOME
