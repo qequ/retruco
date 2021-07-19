@@ -286,6 +286,14 @@ class Parser:
 
         self.nl()
 
+    def iteration(self):
+        print("iteration")
+        self.match(TokenType.MIENTRAS)
+        self.condition()
+        self.nl()
+        self.statements(TokenType.REPITA)
+        self.match(TokenType.REPITA)
+
     # <tomar> DE <pila> <nombre>
 
     def take(self):
