@@ -377,23 +377,28 @@ class Parser:
 
     # <condicion de carta> := <estado> | <caracteristica>
     # <estado> := <carta> ESTA BOCA ABAJO | <carta> NO ESTA BOCA ABAJO
-    # <caracteristica> := <carta> <es o no es> <de palos> | <carta> <es o no es> <valor> | <carta> ES DE <relac> PALO QUE TOPE DE <pila> <nombre>
+    # <caracteristica> := <carta> <es o no es> <de palos> | <carta> <es o no es> <valor>
+    #                    | <carta> <es o no es> DE PALO IGUAL QUE TOPE DE <pila> <nombre>
 
     def card_conditions(self):
         print("condiciones de carta")
         self.card()
 
         if (self.check_token(TokenType.NO) and self.check_peek(TokenType.ESTA)) or self.check_token(TokenType.ESTA):
+            # <estado>
             self.state()
-        elif self.check_token(TokenType.ES) and self.check_peek(TokenType.DE):
-            self.relation_palo_stack()
-        elif self.check_token(TokenType.NO) and self.check_peek(TokenType.ES) or self.check_token(TokenType.ES):
+        elif (self.check_token(TokenType.NO) and self.check_peek(TokenType.ES)) or self.check_token(TokenType.ES):
             self.is_it()
 
-            # check if its_of_palos
             if (self.check_token(TokenType.DEL) and self.check_peek(TokenType.PALO)) or self.check_token(TokenType.OROS) \
                     or self.check_token(TokenType.BASTOS) or self.check_token(TokenType.ESPADAS) or self.check_token(TokenType.COPAS):
+                # <carta> <es o no es> <de palos>
                 self.of_palos()
+
+            elif self.check_token(TokenType.DE) and self.check_peek(TokenType.PALO):
+                # <carta> <es o no es> DE PALO IGUAL QUE TOPE DE <pila> <nombre>
+                self.relation_palo_stack()
+
             else:
                 self.value()
 
@@ -401,6 +406,7 @@ class Parser:
             self.abort("Condicion de Carta mal formada")
 
     # <valor> := DE <rela> VALOR QUE TOPE DE <pila> <nombre> | DE VALOR <relacion> <numero> | <relacion> <numero>
+
     def value(self):
         print("valor")
         if self.check_token(TokenType.DE):
@@ -497,20 +503,11 @@ class Parser:
             self.abort("Esperado NO ESTA... O ESTA... En cambio, se encuentra {}".format(
                 self.cur_token))
 
-    # <carta> ES DE <relac> PALO QUE TOPE DE <pila> <nombre>
+    # <carta> <es o no es> DE PALO IGUAL QUE TOPE DE <pila> <nombre>
     def relation_palo_stack(self):
-        self.match_phrase([TokenType.ES, TokenType.DE])
-
-        if self.check_token(TokenType.IGUAL):
-            self.next_token()
-        elif self.check_token(TokenType.DISTINTO):
-            self.next_token()
-        else:
-            self.abort("Esperado IGUAL o DISTINTO. En cambio, se encuentra {}".format(
-                self.cur_token.text))
-
-        self.match_phrase([TokenType.PALO, TokenType.QUE,
-                          TokenType.TOPE, TokenType.DE])
+        print("relacion palo stack")
+        self.match_phrase([TokenType.DE, TokenType.PALO, TokenType.IGUAL,
+                          TokenType.QUE, TokenType.TOPE, TokenType.DE])
         self.stack()
         self.name(True)
 
