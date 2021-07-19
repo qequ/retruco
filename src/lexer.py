@@ -50,10 +50,10 @@ class Lexer:
 
         if self.cur_char == "-":
             token = Token(self.cur_char, TokenType.DASH)
-        
+
         elif self.cur_char == ",":
             token = Token(self.cur_char, TokenType.COMMA)
-        
+
         elif self.cur_char == ";":
             token = Token(self.cur_char, TokenType.SEMICOLON)
 
@@ -63,7 +63,6 @@ class Lexer:
             startPos = self.cur_pos
             while self.peek().isdigit():
                 self.next_char()
-
 
             # Get the substring.
             tokText = self.source[startPos: self.cur_pos + 1]
@@ -169,3 +168,5 @@ class TokenType(Enum):
     Y = 46
     TIENE = 47
     ARRIBA = 48
+    PALO = 49
+    A = 50
