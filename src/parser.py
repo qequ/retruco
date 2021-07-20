@@ -152,6 +152,8 @@ class Parser:
             if called_by_process:
                 if self.cur_token.text in self.names_declared:
                     # emitter placeholder
+                    self.emitter.append_opcode(
+                        str(self.names_declared.index(self.cur_token.text)))
                     self.next_token()
                 else:
                     self.abort("Nombre de Pila {} no declarado".format(
@@ -293,6 +295,8 @@ class Parser:
     def statement(self):
         # check which of the possible instruction is
 
+        self.emitter.reset_opcode_str()
+
         if self.check_token(TokenType.TOME):
             self.take()
 
@@ -313,6 +317,7 @@ class Parser:
                 self.cur_token.kind))
 
         self.nl()
+        self.emitter.emit_process_inst()
 
     def iteration(self):
         print("iteration")
@@ -334,6 +339,9 @@ class Parser:
 
         self.match(TokenType.DE)
         self.stack()
+
+        self.emitter.append_opcode("0")
+
         self.name(True)
 
     # <depositar> EN <pila> <nombre>
@@ -345,6 +353,10 @@ class Parser:
         else:
             self.match(TokenType.DEPOSITELA)
         self.match(TokenType.EN)
+
+        # emit opcode
+        self.emitter.append_opcode("1")
+
         self.stack()
         self.name(True)
 
@@ -358,6 +370,7 @@ class Parser:
             self.match(TokenType.INVIERTALA)
 
         # emit
+        self.emitter.append_opcode("2")
 
     # <de seleccion> := SI <condicion> nl+ <sentencias> SINO nl+ <sentencias> NADA MAS |
     #                   SI <condicion> nl+ <sentencias> SINO nl+ NADA MAS
