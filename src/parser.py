@@ -1,10 +1,12 @@
 import sys
 from lexer import *
+from emitter import *
 
 
 class Parser:
-    def __init__(self, lexer):
+    def __init__(self, lexer, emitter):
         self.lexer = lexer
+        self.emitter = emitter
 
         # names declared in declarations part of the program
         self.names_declared = []
@@ -178,6 +180,12 @@ class Parser:
         if self.check_token(TokenType.NO):
             self.match_phrase(
                 [TokenType.NO, TokenType.TIENE, TokenType.CARTAS])
+
+            # emit
+            self.emitter.append_opcode(str(len(self.names_declared)-1))
+            self.emitter.emit_stack_inst()
+            self.emitter.reset_opcode_str()
+
         elif self.check_token(TokenType.TIENE):
             self.next_token()
             self.cards_list()
@@ -199,6 +207,10 @@ class Parser:
 
     # <descripcion de carta> := <numero> DE <palos> <posicion>
     def card_description(self):
+
+        # emit the number of the stack
+        self.emitter.append_opcode(str(len(self.names_declared)-1))
+
         self.number()
         self.match(TokenType.DE)
         self.palos()
@@ -211,6 +223,9 @@ class Parser:
             valid_nums = [i for i in range(1, 8)] + [i for i in range(10, 13)]
             if not int(self.cur_token.text) in valid_nums:
                 self.abort("Tiene que ser un numero entre 1 y 7 o 10 y 12")
+
+            # emit
+            self.emitter.append_opcode(self.cur_token.text)
 
             self.next_token()
         else:
@@ -225,6 +240,12 @@ class Parser:
                 self.check_token(TokenType.BASTOS) or \
                 self.check_token(TokenType.ESPADAS) or self.check_token(TokenType.COPAS):
 
+            if used_for_process:
+                pass
+            else:
+                # used for declarations
+                self.emitter.append_opcode(self.cur_token.text[0])
+
             self.next_token()
         else:
             self.abort(
@@ -236,13 +257,20 @@ class Parser:
 
         if self.check_token(TokenType.ARRIBA):
 
+            self.emitter.append_opcode("U")
+
             self.next_token()
         elif self.check_token(TokenType.ABAJO):
 
+            self.emitter.append_opcode("D")
             self.next_token()
         else:
             self.abort(
                 "Se esperaba ARRIBA o ABAJO, en cambio se tiene {}".format(self.cur_token.text))
+
+        # add to stack instruction
+        self.emitter.emit_stack_inst()
+        self.emitter.reset_opcode_str()
 
     def process(self):
         print("PROCESS")
