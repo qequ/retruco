@@ -322,10 +322,18 @@ class Parser:
     def iteration(self):
         print("iteration")
         self.match(TokenType.MIENTRAS)
+        self.emitter.append_opcode("7")
         self.condition()
+
+        # while opcode instruction is complete
+        self.emitter.emit_process_inst()
+
         self.nl()
         self.statements(TokenType.REPITA)
         self.match(TokenType.REPITA)
+
+        self.emitter.reset_opcode_str()
+        self.emitter.append_opcode("8")
 
     # <tomar> DE <pila> <nombre>
 
