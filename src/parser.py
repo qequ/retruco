@@ -243,7 +243,7 @@ class Parser:
                 self.check_token(TokenType.ESPADAS) or self.check_token(TokenType.COPAS):
 
             if used_for_process:
-                pass
+                self.emitter.append_opcode(self.cur_token.text[0])
             else:
                 # used for declarations
                 self.emitter.append_opcode(self.cur_token.text[0])
@@ -378,10 +378,24 @@ class Parser:
     def selection(self):
         print("selection")
         self.match(TokenType.SI)
+
+        # emit
+        self.emitter.append_opcode("3")
+
         self.condition()
+
+        # if <condition> is complete
+        self.emitter.emit_process_inst()
+
         self.nl()
         self.statements(TokenType.SINO)
         self.match(TokenType.SINO)
+
+        # emit
+        self.emitter.reset_opcode_str()
+        self.emitter.append_opcode("4")
+        self.emitter.emit_process_inst()
+        self.emitter.reset_opcode_str()
         self.nl()
         if self.check_token(TokenType.NADA):
             self.match_phrase([TokenType.NADA, TokenType.MAS])
@@ -389,12 +403,21 @@ class Parser:
             self.statements(TokenType.NADA)
             self.match_phrase([TokenType.NADA, TokenType.MAS])
 
+        self.emitter.reset_opcode_str()
+        self.emitter.append_opcode("5")
+
     def condition(self):
         print("condicion")
         self.simple_condition()
 
         while self.check_token(TokenType.Y) or self.check_token(TokenType.O):
+
+            if self.check_token(TokenType.Y):
+                self.emitter.append_opcode("&")
+            else:
+                self.emitter.append_opcode("|")
             self.next_token()
+
             self.simple_condition()
 
     # <condicion simple> := <condicion de pila vacia> | <condiciones de carta>
@@ -412,14 +435,22 @@ class Parser:
     def empty_stack_condition(self):
         print("condicion pila vacia")
         self.stack()
+
+        # emit
+        self.emitter.append_opcode("P")
+
         self.name(True)
 
         if self.check_token(TokenType.NO):
             self.match_phrase([TokenType.NO, TokenType.ESTA, TokenType.VACIA])
             # emit
+            self.emitter.append_opcode("N")
+
         elif self.check_token(TokenType.ESTA):
             self.match_phrase([TokenType.ESTA, TokenType.VACIA])
             # emit
+            self.emitter.append_opcode("E")
+
         else:
             self.abort("Se esperaba NO ESTA, ESTA. En cambio, se encuentra {}".format(
                 self.cur_token.text))
@@ -432,6 +463,9 @@ class Parser:
     def card_conditions(self):
         print("condiciones de carta")
         self.card()
+
+        # emit
+        self.emitter.append_opcode("C")
 
         if (self.check_token(TokenType.NO) and self.check_peek(TokenType.ESTA)) or self.check_token(TokenType.ESTA):
             # <estado>
@@ -480,23 +514,31 @@ class Parser:
 
     def rela(self):
         if self.check_token(TokenType.IGUAL):
+            self.emitter.append_opcode("=")
             self.next_token()
 
         elif self.check_token(TokenType.DISTINTO):
+            self.emitter.append_opcode("!=")
             self.next_token()
 
         elif self.check_token(TokenType.MAYOR):
             if self.check_peek(TokenType.O):
                 self.match_phrase(
                     [TokenType.MAYOR, TokenType.O, TokenType.IGUAL])
+                self.emitter.append_opcode(">=")
+
             else:
+                self.emitter.append_opcode(">")
                 self.next_token()
 
         elif self.check_token(TokenType.MENOR):
             if self.check_peek(TokenType.O):
                 self.match_phrase(
                     [TokenType.MENOR, TokenType.O, TokenType.IGUAL])
+                self.emitter.append_opcode("<=")
+
             else:
+                self.emitter.append_opcode("<")
                 self.next_token()
 
         else:
@@ -508,23 +550,32 @@ class Parser:
     def relation(self):
         if self.check_token(TokenType.IGUAL):
             self.match_phrase([TokenType.IGUAL, TokenType.A])
+            self.emitter.append_opcode("=")
 
         elif self.check_token(TokenType.DISTINTO):
             self.match_phrase([TokenType.DISTINTO, TokenType.DE])
+            self.emitter.append_opcode("!=")
 
         elif self.check_token(TokenType.MAYOR):
             if self.check_peek(TokenType.O):
                 self.match_phrase(
                     [TokenType.MAYOR, TokenType.O, TokenType.IGUAL, TokenType.A])
+                self.emitter.append_opcode(">=")
+
             else:
                 self.match_phrase([TokenType.MAYOR, TokenType.QUE])
+                self.emitter.append_opcode(">")
 
         elif self.check_token(TokenType.MENOR):
             if self.check_peek(TokenType.O):
                 self.match_phrase(
                     [TokenType.MENOR, TokenType.O, TokenType.IGUAL, TokenType.A])
+                self.emitter.append_opcode("<=")
+
             else:
                 self.match_phrase([TokenType.MENOR, TokenType.QUE])
+                self.emitter.append_opcode("<")
+
         else:
             self.abort("Se esperaba una relacion; IGUAL, DISTINTO, MAYOR, MENOR... En cambio, se encuentra {}".format(
                 self.cur_token.text))
@@ -535,7 +586,7 @@ class Parser:
         if self.check_token(TokenType.DEL):
             self.match_phrase([TokenType.DEL, TokenType.PALO])
 
-        self.palos()
+        self.palos(True)
 
     # <carta> ESTA BOCA ABAJO | <carta> NO ESTA BOCA ABAJO
     def state(self):
@@ -544,13 +595,18 @@ class Parser:
             self.match_phrase([TokenType.NO, TokenType.ESTA,
                               TokenType.BOCA, TokenType.ABAJO])
 
+            self.emitter.append_opcode("N")
+
         elif self.check_token(TokenType.ESTA):
             self.match_phrase(
                 [TokenType.ESTA, TokenType.BOCA, TokenType.ABAJO])
+            self.emitter.append_opcode("E")
 
         else:
             self.abort("Esperado NO ESTA... O ESTA... En cambio, se encuentra {}".format(
                 self.cur_token))
+
+        self.emitter.append_opcode("F")
 
     # <carta> <es o no es> DE PALO IGUAL QUE TOPE DE <pila> <nombre>
     def relation_palo_stack(self):
@@ -558,14 +614,22 @@ class Parser:
         self.match_phrase([TokenType.DE, TokenType.PALO, TokenType.IGUAL,
                           TokenType.QUE, TokenType.TOPE, TokenType.DE])
         self.stack()
+
+        # emit
+        self.emitter.append_opcode("P")
+
         self.name(True)
 
     # <es o no es> := ES | NO ES
     def is_it(self):
         if self.check_token(TokenType.ES):
             self.next_token()
+            # emit
+            self.emitter.append_opcode("E")
         elif self.check_token(TokenType.NO):
             self.match_phrase([TokenType.NO, TokenType.ES])
+            # emit
+            self.emitter.append_opcode("N")
         else:
             self.abort("Esperado ES o NO ES. En cambio, se encuentra {}".format(
                 self.cur_token.text))
