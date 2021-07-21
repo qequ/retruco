@@ -10,8 +10,6 @@ class Parser:
 
         # names declared in declarations part of the program
         self.names_declared = []
-        # names listed in process part of the program
-        self.names_listed = set()
 
         self.cur_token = None
         self.peek_token = None
@@ -91,11 +89,6 @@ class Parser:
         self.match(TokenType.SEMICOLON)
         self.skip_whitespace_tokens()
         self.process()
-
-        for stack_names in self.names_listed:
-            if not stack_names in self.names_declared:
-                self.abort(
-                    "Declarada una pila que no existe: {}".format(stack_names))
 
     # <declaraciones> := UCP EJECUTE CON LAS SIGUIENTES CARTAS nl <lista de pilas>
 
@@ -246,7 +239,11 @@ class Parser:
                 self.emitter.append_opcode(self.cur_token.text[0])
             else:
                 # used for declarations
-                self.emitter.append_opcode(self.cur_token.text[0])
+                str_replace = self.cur_token.text[0] + \
+                    self.emitter.opcode_str[-1]
+
+                self.emitter.opcode_str = self.emitter.opcode_str[:-
+                                                                  1] + str_replace
 
             self.next_token()
         else:
