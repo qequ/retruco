@@ -36,6 +36,10 @@ else:
     parser = Parser(lexer, emitter)
     parser.program()  # Start the parser.
 
+    if emitter.check_repeated_cards():
+        print("Error - Se encontraron cartas repetidas en las pilas")
+        sys.exit(1)
+
     vm = VirtualMachine(emitter.process_instructions,
                         emitter.stacks_instructions)
 
