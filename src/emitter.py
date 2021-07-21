@@ -25,3 +25,15 @@ class Emitter():
         """
 
         self.process_instructions.append(self.opcode_str)
+
+    def check_repeated_cards(self):
+        """
+        Returns True if there are repeated cards among the stacks
+        """
+        stack_opcodes_filt = list(filter(
+            lambda s: len(s) > 1, self.stacks_instructions))
+        print(stack_opcodes_filt)
+
+        cards_f = list(map(lambda s: s[1:-1], stack_opcodes_filt))
+
+        return len(set(cards_f)) != len(cards_f)
