@@ -32,7 +32,6 @@ class Emitter():
         """
         stack_opcodes_filt = list(filter(
             lambda s: len(s) > 1, self.stacks_instructions))
-        print(stack_opcodes_filt)
 
         cards_f = list(map(lambda s: s[1:-1], stack_opcodes_filt))
 
