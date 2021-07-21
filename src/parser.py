@@ -80,7 +80,6 @@ class Parser:
 
     # programa ::=   <declaraciones> ; nl* <proceso>
     def program(self):
-        print("PROGRAM")
 
         # Since some newlines are required in our grammar, need to skip the excess.
         self.skip_whitespace_tokens()
@@ -139,7 +138,6 @@ class Parser:
 
     # <nombre> := str alfanumérico que no comienza con número ni contiene símbolos especiales, palabras reservadas
     def name(self, called_by_process=False):
-        print("name")
         if self.check_token(TokenType.IDENT):
 
             if called_by_process:
@@ -213,7 +211,6 @@ class Parser:
 
     # <numero> := 1 | 2 | 3 | 4 | 5 | 6 | 7 | 10 | 11 | 12
     def number(self, used_by_process=False):
-        print("number")
         if self.check_token(TokenType.NUMBER):
             valid_nums = [i for i in range(1, 8)] + [i for i in range(10, 13)]
             if not int(self.cur_token.text) in valid_nums:
@@ -229,7 +226,6 @@ class Parser:
 
     # <palos> := OROS | BASTOS | ESPADAS | COPAS
     def palos(self, used_for_process=False):
-        print("palos")
         if self.check_token(TokenType.OROS
                             ) or \
                 self.check_token(TokenType.BASTOS) or \
@@ -272,7 +268,6 @@ class Parser:
         self.emitter.reset_opcode_str()
 
     def process(self):
-        print("PROCESS")
         self.match_phrase([TokenType.DEFINICION, TokenType.DE,
                           TokenType.PROGRAMA, TokenType.NEWLINE])
         self.code_line += 1
@@ -317,7 +312,6 @@ class Parser:
         self.emitter.emit_process_inst()
 
     def iteration(self):
-        print("iteration")
         self.match(TokenType.MIENTRAS)
         self.emitter.append_opcode("7")
         self.condition()
@@ -335,7 +329,6 @@ class Parser:
     # <tomar> DE <pila> <nombre>
 
     def take(self):
-        print("tomar")
         self.match(TokenType.TOME)
         if self.check_token(TokenType.UNA):
             self.next_token()
@@ -351,7 +344,6 @@ class Parser:
 
     # <depositar> EN <pila> <nombre>
     def deposit(self):
-        print("depositar")
         if self.check_token(TokenType.DEPOSITE):
             self.match_phrase(
                 [TokenType.DEPOSITE, TokenType.LA, TokenType.CARTA])
@@ -367,7 +359,6 @@ class Parser:
 
     # <invertir>
     def invert(self):
-        print("invertir")
         if self.check_token(TokenType.INVIERTA):
             self.match_phrase(
                 [TokenType.INVIERTA, TokenType.LA, TokenType.CARTA])
@@ -381,7 +372,6 @@ class Parser:
     #                   SI <condicion> nl+ <sentencias> SINO nl+ NADA MAS
 
     def selection(self):
-        print("selection")
         self.match(TokenType.SI)
 
         # emit
@@ -412,7 +402,6 @@ class Parser:
         self.emitter.append_opcode("5")
 
     def condition(self):
-        print("condicion")
         self.simple_condition()
 
         while self.check_token(TokenType.Y) or self.check_token(TokenType.O):
@@ -427,7 +416,6 @@ class Parser:
 
     # <condicion simple> := <condicion de pila vacia> | <condiciones de carta>
     def simple_condition(self):
-        print("condicion simple")
         if self.check_token(TokenType.CARTA) or self.check_peek(TokenType.CARTA):
             self.card_conditions()
         elif self.check_token(TokenType.PILA) or self.check_peek(TokenType.PILA):
@@ -438,7 +426,6 @@ class Parser:
 
     # <condicion de pila vacia> := <pila> <nombre> ESTA VACIA | <pila> <nombre> NO ESTA VACIA
     def empty_stack_condition(self):
-        print("condicion pila vacia")
         self.stack()
 
         # emit
@@ -466,7 +453,6 @@ class Parser:
     #                    | <carta> <es o no es> DE PALO IGUAL QUE TOPE DE <pila> <nombre>
 
     def card_conditions(self):
-        print("condiciones de carta")
         self.card()
 
         # emit
@@ -496,7 +482,6 @@ class Parser:
     # <valor> := DE <rela> VALOR QUE TOPE DE <pila> <nombre> | DE VALOR <relacion> <numero> | <relacion> <numero>
 
     def value(self):
-        print("valor")
         if self.check_token(TokenType.DE):
             self.next_token()
             # DE <rela> VALOR QUE TOPE DE <pila> <nombre> | DE VALOR <relacion> <numero>
@@ -595,7 +580,6 @@ class Parser:
 
     # <carta> ESTA BOCA ABAJO | <carta> NO ESTA BOCA ABAJO
     def state(self):
-        print("estado")
         if self.check_token(TokenType.NO):
             self.match_phrase([TokenType.NO, TokenType.ESTA,
                               TokenType.BOCA, TokenType.ABAJO])
@@ -615,7 +599,6 @@ class Parser:
 
     # <carta> <es o no es> DE PALO IGUAL QUE TOPE DE <pila> <nombre>
     def relation_palo_stack(self):
-        print("relacion palo stack")
         self.match_phrase([TokenType.DE, TokenType.PALO, TokenType.IGUAL,
                           TokenType.QUE, TokenType.TOPE, TokenType.DE])
         self.stack()
@@ -652,7 +635,6 @@ class Parser:
     # nl+ ::= '\n'+
 
     def nl(self):
-        print("NEWLINE")
         # Require at least one newline.
         self.match(TokenType.NEWLINE)
         self.code_line += 1

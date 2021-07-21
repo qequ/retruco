@@ -35,9 +35,6 @@ else:
 
     parser = Parser(lexer, emitter)
     parser.program()  # Start the parser.
-    print("Parsing completed.")
-    print(emitter.stacks_instructions)
-    print(emitter.process_instructions)
 
     vm = VirtualMachine(emitter.process_instructions,
                         emitter.stacks_instructions)
