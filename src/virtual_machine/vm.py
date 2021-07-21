@@ -5,7 +5,7 @@ class VirtualMachine():
 
     def __init__(self, opcodes, stacks_opcodes):
         """
-        Opcodes: a list of strings that contains opcodes to be executed by 
+        Opcodes: a list of strings that contains opcodes to be executed by
         virtual machine
         stacks_opcodes: a list of strings that contains opcodes to set up stacks
         """
@@ -63,7 +63,6 @@ class VirtualMachine():
             elif changing_part[0] == "P":
                 stack_num = int(changing_part[1:])
 
-
                 if len(self.stacks[stack_num]) == 0:
                     self.error_code = 2
                     return False
@@ -72,7 +71,6 @@ class VirtualMachine():
                     # the card at the top of the stack is face down
                     self.error_code = 5
                     return False
-
 
                 log_dec = "self.hand.type == self.stacks[{}][-1].type".format(
                     stack_num)
@@ -346,8 +344,8 @@ class VirtualMachine():
 
         if self.error_code != 0:
             # showing error
-            print("Error in instruction {} - Address: {}",
-                  format(self.opcodes[self.last_opcode_address], self.last_opcode_address))
+            print("Error in instruction " +
+                  self.opcodes[self.last_opcode_address] + "- Address: " + str(self.last_opcode_address))
             if self.error_code == 1:
                 print("ERROR CODE 1 - FULL_HAND_ERROR")
             elif self.error_code == 2:
@@ -361,21 +359,27 @@ class VirtualMachine():
 
             print("EXECUTION INTERRUPTED")
 
-    def show_machine_status(self):
+    def show_machine_status(self, names_list=None):
         """
         prints the stacks and hand cards
         """
-        self.update_machine_status()
+        self.update_machine_status(names_list)
         print(self.machine_status)
 
-    def update_machine_status(self):
+    def update_machine_status(self, names_list=None):
         """
         update the machine_status variable
         """
+
         self.machine_status = ""
         count = 0
         for s in self.stacks:
-            self.machine_status += "PILA: {}\n".format(count)
+
+            if names_list == None:
+                self.machine_status += "PILA: {}\n".format(count)
+            else:
+                self.machine_status += "PILA: {}\n".format(names_list[count])
+
             for c in s:
                 self.machine_status += c.card_information()
             count += 1
