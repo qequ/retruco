@@ -629,7 +629,3 @@ class Retruco(tk.Tk):
             self.stack_set_instruction.insert(
                 tk.END, "CREE LA PILA {}\n".format(name_stack))
             self.stack_set_instruction.config(state=tk.DISABLED)
-
-
-rt = Retruco()
-rt.mainloop()
