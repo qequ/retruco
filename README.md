@@ -1,6 +1,6 @@
 # Retruco
 
-![Retroco_logo](/logo/timba.png)
+![Retroco_logo](/src/logo/timba.png)
 
 A virtual machine and interpreter for the [TIMBA](http://dirinfo.unsl.edu.ar/servicios/abm/assets/uploads/materiales/ddafb-timba-2018.pdf) language.
 
