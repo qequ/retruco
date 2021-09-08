@@ -20,6 +20,20 @@ pip install tk
 python retruco.py
 ```
 
+# Example programs
+
+## Hello Timba
+The language can't handle strings so the most basic program is taking a card from a stack;
+
+```
+UCP EJECUTE CON LAS SIGUIENTES CARTAS
+LA PILA HOLATIMBA TIENE 1 DE ESPADAS BOCA ARRIBA;
+
+DEFINICION DE PROGRAMA
+TOME UNA CARTA DE LA PILA HOLATIMBA
+
+```
+
 # TODO
 - [ ] A setup script
 
