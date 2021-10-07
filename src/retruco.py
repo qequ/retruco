@@ -1,7 +1,7 @@
 import sys
 from optparse import OptionParser
 from typing import DefaultDict
-from retruco_gui import Retruco
+from gui_retruco import Retruco
 
 from lexer import *
 from emitter import *
