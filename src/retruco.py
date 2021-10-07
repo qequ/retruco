@@ -1,5 +1,6 @@
 import sys
 from optparse import OptionParser
+from typing import DefaultDict
 from retruco_gui import Retruco
 
 from lexer import *
@@ -11,7 +12,8 @@ from virtual_machine.vm import VirtualMachine
 parser = OptionParser(usage="usage: %prog [options] [file]")
 parser.add_option("-g", "--gui", action="store_true", default=False, dest="use_gui",
                   help="abre el editor de Retruco")
-
+parser.add_option("-d", "--debug", action="store_true", default=False, dest="debug",
+                  help="muestra los opcodes generados por el compilador y los estados de las pilas después de ejecutar cada instrucción")
 
 (options, args) = parser.parse_args()
 
@@ -27,7 +29,7 @@ else:
         parser.print_help()
         sys.exit(1)
 
-    with open(sys.argv[1], 'r') as inputFile:
+    with open(sys.argv[2], 'r') as inputFile:
         input = inputFile.read()
 
     lexer = Lexer(input)
@@ -40,8 +42,17 @@ else:
         print("Error - Se encontraron cartas repetidas en las pilas")
         sys.exit(1)
 
+    if options.debug:
+        print("stacks instructions")
+        print(emitter.stacks_instructions)
+
+        print("----------")
+        print("process instructions")
+        print(emitter.process_instructions)
+        print("----------")
+
     vm = VirtualMachine(emitter.process_instructions,
-                        emitter.stacks_instructions)
+                        emitter.stacks_instructions, options.debug)
 
     vm.run()
 

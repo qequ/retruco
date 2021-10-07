@@ -3,7 +3,7 @@ from .cards import Card, Position
 
 class VirtualMachine():
 
-    def __init__(self, opcodes, stacks_opcodes):
+    def __init__(self, opcodes, stacks_opcodes, debug=False):
         """
         Opcodes: a list of strings that contains opcodes to be executed by
         virtual machine
@@ -33,6 +33,7 @@ class VirtualMachine():
         self.last_opcode_address = 0  # useful to show the error in code
         # a string that contains information about the hand and the stacks
         self.machine_status = ""
+        self.debug = debug  # debug flag
 
     def decode_logical_condition(self, logic_cond):
         log_dec = ""
@@ -342,6 +343,9 @@ class VirtualMachine():
             if self.error_code != 0:
                 break
 
+            if self.debug:
+                self.show_machine_status()
+
         if self.error_code != 0:
             # showing error
             print("Error in instruction " +
@@ -374,7 +378,6 @@ class VirtualMachine():
         self.machine_status = ""
         count = 0
         for s in self.stacks:
-
             if names_list == None:
                 self.machine_status += "PILA: {}\n".format(count)
             else:
