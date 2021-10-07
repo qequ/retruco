@@ -29,7 +29,11 @@ else:
         parser.print_help()
         sys.exit(1)
 
-    with open(sys.argv[2], 'r') as inputFile:
+    FILE_POS = 1
+    if options.debug:
+        FILE_POS += 1
+
+    with open(sys.argv[FILE_POS], 'r') as inputFile:
         input = inputFile.read()
 
     lexer = Lexer(input)
