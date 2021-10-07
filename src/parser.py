@@ -235,11 +235,16 @@ class Parser:
                 self.emitter.append_opcode(self.cur_token.text[0])
             else:
                 # used for declarations
-                str_replace = self.cur_token.text[0] + \
-                    self.emitter.opcode_str[-1]
+                if len(self.emitter.opcode_str) == 3:
+                    # two digits card
+                    number = self.emitter.opcode_str[-2] + \
+                        self.emitter.opcode_str[-1]
+                else:
+                    number = self.emitter.opcode_str[-1]
 
-                self.emitter.opcode_str = self.emitter.opcode_str[:-
-                                                                  1] + str_replace
+                self.emitter.opcode_str = self.emitter.opcode_str[0]
+                self.emitter.append_opcode(self.cur_token.text[0])
+                self.emitter.append_opcode(number)
 
             self.next_token()
         else:
