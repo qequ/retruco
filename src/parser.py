@@ -500,6 +500,7 @@ class Parser:
                 self.rela()
                 self.match_phrase(
                     [TokenType.VALOR, TokenType.QUE, TokenType.TOPE, TokenType.DE, TokenType.PILA])
+                self.emitter.append_opcode("P")
                 self.name(True)
         else:
             self.relation()
