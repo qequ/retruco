@@ -4,6 +4,9 @@
 
 A virtual machine and interpreter for the [TIMBA](http://dirinfo.unsl.edu.ar/servicios/abm/assets/uploads/materiales/ddafb-timba-2018.pdf) language.
 
+
+Un intérprete para el lenguaje de programación [TIMBA](http://dirinfo.unsl.edu.ar/servicios/abm/assets/uploads/materiales/ddafb-timba-2018.pdf)
+
 # Prerequisites
 
 1. Python3
