@@ -3,9 +3,9 @@ from optparse import OptionParser
 from typing import DefaultDict
 from gui_retruco import Retruco
 
-from lexer import *
-from emitter import *
-from parser import *
+from compiler.lexer import *
+from compiler.emitter import *
+from compiler.parser import *
 from virtual_machine.vm import VirtualMachine
 
 

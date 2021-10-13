@@ -1,6 +1,6 @@
 import sys
-from lexer import *
-from emitter import *
+from .lexer import *
+from .emitter import *
 
 
 class Parser:
