@@ -19,6 +19,7 @@ class App():
         pyxel.cls(0)
 
         pyxel.rect(0, 0, 256, 256, 3)
+        pyxel.rect(self.ed.pointer_x, self.ed.pointer_y, 4, 5, 8)
 
         pyxel.text(0, 0, self.ed.program, 10)
 
