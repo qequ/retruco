@@ -1,7 +1,7 @@
 from .cards import Card, Position
 
 
-class VirtualMachine():
+class VirtualMachine:
 
     def __init__(self, opcodes, stacks_opcodes, debug=False):
         """
@@ -47,7 +47,7 @@ class VirtualMachine():
                 log_dec = "not " + log_dec
 
         elif logic_cond[0] == "C":
-            if self.hand == None:
+            if self.hand is None:
                 # none card has been taken
                 self.error_code = 3
                 return False
@@ -59,7 +59,7 @@ class VirtualMachine():
             if changing_part[0] == "F":
                 log_dec = "self.hand.position == Position.FACE_DOWN"
             elif changing_part[0] in ["E", "B", "C", "O"]:
-                log_dec = "self.hand.type == '{}'".format(changing_part[0])
+                log_dec = f"self.hand.type == '{changing_part[0]}'"
 
             elif changing_part[0] == "P":
                 stack_num = int(changing_part[1:])
@@ -73,8 +73,7 @@ class VirtualMachine():
                     self.error_code = 5
                     return False
 
-                log_dec = "self.hand.type == self.stacks[{}][-1].type".format(
-                    stack_num)
+                log_dec = f"self.hand.type == self.stacks[{stack_num}][-1].type"
 
             elif changing_part[0] in ["!", "=", "<", ">"]:
                 if changing_part[1] == "=":
@@ -97,14 +96,12 @@ class VirtualMachine():
                         self.error_code = 5
                         return False
 
-                    log_dec = "self.hand.value {} self.stacks[{}][-1].value".format(
-                        logical_comp, stack_num)
+                    log_dec = f"self.hand.value {logical_comp} self.stacks[{stack_num}][-1].value"
 
                 elif changing_part[offset:].isnumeric():
                     # check if the value of the card is equal to a given
                     # number
-                    log_dec = "self.hand.value {} {}".format(
-                        logical_comp, changing_part[offset:])
+                    log_dec = f"self.hand.value {logical_comp} {changing_part[offset:]}"
 
                 else:
                     self.error_code = 4
@@ -135,8 +132,8 @@ class VirtualMachine():
         """
         propositions = list(map(lambda s: s.split("&"), cond.split("|")))
 
-        logic = list(map(lambda l: list(
-            map(lambda x: self.decode_logical_condition(x), l)), propositions))
+        logic = list(map(lambda conj: list(
+            map(lambda x: self.decode_logical_condition(x), conj)), propositions))
 
         res = []
         for b in logic:
@@ -265,20 +262,20 @@ class VirtualMachine():
                 v = int(ins[palo_index + 1: -1])
                 p = ins[palo_index]
                 if ins[-1] == "D":
-                    l = Position.FACE_DOWN
+                    pos = Position.FACE_DOWN
                 else:
-                    l = Position.FACE_UP
+                    pos = Position.FACE_UP
                 try:
-                    self.stacks[sp].append(Card(v, p, l))
+                    self.stacks[sp].append(Card(v, p, pos))
                 except IndexError:
                     self.stacks.insert(sp, [])
-                    self.stacks[sp].append(Card(v, p, l))
+                    self.stacks[sp].append(Card(v, p, pos))
 
     def take_card(self):
         # OPCODE FORM: 0S where S is stack number
         opcode = self.opcodes[self.pc]
 
-        if self.hand != None:
+        if self.hand is not None:
             # I'm already holdoing a card in hand
             self.error_code = 1
             return
@@ -293,7 +290,7 @@ class VirtualMachine():
         # OPCODE FORM: 1S where S is stack number
         opcode = self.opcodes[self.pc]
 
-        if self.hand == None:
+        if self.hand is None:
             self.error_code = 3
             return
 
@@ -302,7 +299,7 @@ class VirtualMachine():
 
     def invert_hand_card(self):
         # OPCODE == 2
-        if self.hand == None:
+        if self.hand is None:
             self.error_code = 3
             return
         self.hand.swap_position()
@@ -378,10 +375,10 @@ class VirtualMachine():
         self.machine_status = ""
         count = 0
         for s in self.stacks:
-            if names_list == None:
-                self.machine_status += "PILA: {}\n".format(count)
+            if names_list is None:
+                self.machine_status += f"PILA: {count}\n"
             else:
-                self.machine_status += "PILA: {}\n".format(names_list[count])
+                self.machine_status += f"PILA: {names_list[count]}\n"
 
             for c in s:
                 self.machine_status += c.card_information()
@@ -389,7 +386,7 @@ class VirtualMachine():
 
         self.machine_status += "\n"
         self.machine_status += "MANO\n"
-        if self.hand != None:
+        if self.hand is not None:
             self.machine_status += self.hand.card_information()
         else:
             self.machine_status += "MANO VACIA\n"

@@ -6,13 +6,13 @@ class Position(Enum):
     FACE_DOWN = 2
 
 
-class Card():
+class Card:
 
     def __init__(self, value, type_card, position=Position.FACE_UP):
         """
         type: O(ro), B(asto), C(opa), E(spada)
         Value: 1, 2, 3, ..., 12
-        position: face up / face down 
+        position: face up / face down
         """
         self.type = type_card
         self.value = value
@@ -42,7 +42,7 @@ class Card():
         elif self.type == "C":
             type_card = "COPA"
 
-        print("{} DE {} - BOCA {}".format(self.value, type_card, pos))
+        print(f"{self.value} DE {type_card} - BOCA {pos}")
 
     def card_information(self):
         if self.position == Position.FACE_DOWN:
@@ -59,4 +59,4 @@ class Card():
         elif self.type == "C":
             type_card = "COPA"
 
-        return "{} DE {} - BOCA {}\n".format(self.value, type_card, pos)
+        return f"{self.value} DE {type_card} - BOCA {pos}\n"

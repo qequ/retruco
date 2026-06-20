@@ -1,6 +1,6 @@
 import sys
-from .lexer import *
-from .emitter import *
+
+from .lexer import TokenType
 
 
 class Parser:
@@ -71,7 +71,7 @@ class Parser:
         # No need to worry about passing the EOF, lexer handles that.
 
     def abort(self, message):
-        sys.exit("Error. " + message + " - Linea {}".format(self.code_line))
+        sys.exit("Error. " + message + f" - Linea {self.code_line}")
 
     def skip_whitespace_tokens(self):
         while self.check_token(TokenType.NEWLINE):
@@ -134,7 +134,7 @@ class Parser:
             self.next_token()
         else:
             self.abort(
-                "Se esperaba LA PILA O PILA, en cambio se encuentra {}".format(self.cur_token.text))
+                f"Se esperaba LA PILA O PILA, en cambio se encuentra {self.cur_token.text}")
 
     # <nombre> := str alfanumérico que no comienza con número ni contiene símbolos especiales, palabras reservadas
     def name(self, called_by_process=False):
@@ -147,26 +147,22 @@ class Parser:
                         str(self.names_declared.index(self.cur_token.text)))
                     self.next_token()
                 else:
-                    self.abort("Nombre de Pila {} no declarado".format(
-                        self.cur_token.text))
+                    self.abort(f"Nombre de Pila {self.cur_token.text} no declarado")
 
             else:
                 # it's the name of a new stack
                 if self.cur_token.text in self.names_declared:
-                    self.abort("Nombre de Pila {} ya declarado anteriormente".format(
-                        self.cur_token.text))
+                    self.abort(f"Nombre de Pila {self.cur_token.text} ya declarado anteriormente")
                 elif len(self.cur_token.text) == 0 or self.cur_token.text[0].isdigit():
-                    self.abort("Nombre de Pila {} Incorrecto - no puede comenzar con numero".format(
-                        self.cur_token.text))
+                    self.abort(f"Nombre de Pila {self.cur_token.text} Incorrecto - no puede comenzar con numero")
                 for tok in TokenType:
                     if tok.value >= 2 and self.cur_token.text == tok.name:
                         self.abort(
-                            "Nombre de Pila {} Incorrecto - palabra reservada".format(self.cur_token.text))
+                            f"Nombre de Pila {self.cur_token.text} Incorrecto - palabra reservada")
                 self.names_declared.append(self.cur_token.text)
                 self.next_token()
         else:
-            self.abort("Esperado Nombre de Pila, en cambio se encuentra {}".format(
-                self.cur_token.text))
+            self.abort(f"Esperado Nombre de Pila, en cambio se encuentra {self.cur_token.text}")
 
     # <contenido> := NO TIENE CARTAS | TIENE <lista de cartas>
     def content(self):
@@ -185,7 +181,7 @@ class Parser:
 
         else:
             self.abort(
-                "Se esperaba NO o TIENE pero se encuentra {}".format(self.cur_token.text))
+                f"Se esperaba NO o TIENE pero se encuentra {self.cur_token.text}")
 
     # <lista de cartas> := <descripcion de carta> | <descripcion de carta> - nl* <lista de cartas>
     def cards_list(self):
@@ -213,7 +209,7 @@ class Parser:
     def number(self, used_by_process=False):
         if self.check_token(TokenType.NUMBER):
             valid_nums = [i for i in range(1, 8)] + [i for i in range(10, 13)]
-            if not int(self.cur_token.text) in valid_nums:
+            if int(self.cur_token.text) not in valid_nums:
                 self.abort("Tiene que ser un numero entre 1 y 7 o 10 y 12")
 
             # emit
@@ -222,7 +218,7 @@ class Parser:
             self.next_token()
         else:
             self.abort(
-                "Se esperaba un numero, en cambio hay {}".format(self.cur_token.text))
+                f"Se esperaba un numero, en cambio hay {self.cur_token.text}")
 
     # <palos> := OROS | BASTOS | ESPADAS | COPAS
     def palos(self, used_for_process=False):
@@ -249,7 +245,7 @@ class Parser:
             self.next_token()
         else:
             self.abort(
-                "Se esperaba un palo de carta, en cambio se tiene {}".format(self.cur_token.text))
+                f"Se esperaba un palo de carta, en cambio se tiene {self.cur_token.text}")
 
     # <posicion> := BOCA ARRIBA | BOCA ABAJO
     def position(self):
@@ -266,7 +262,7 @@ class Parser:
             self.next_token()
         else:
             self.abort(
-                "Se esperaba ARRIBA o ABAJO, en cambio se tiene {}".format(self.cur_token.text))
+                f"Se esperaba ARRIBA o ABAJO, en cambio se tiene {self.cur_token.text}")
 
         # add to stack instruction
         self.emitter.emit_stack_inst()
@@ -310,8 +306,7 @@ class Parser:
             self.iteration()
 
         else:
-            self.abort("Se esperaba una operacion: TOME, DEPOSITE, INVIERTA, SI, MIENTRAS. En cambio, se encuentra: {}".format(
-                self.cur_token.kind))
+            self.abort(f"Se esperaba una operacion: TOME, DEPOSITE, INVIERTA, SI, MIENTRAS. En cambio, se encuentra: {self.cur_token.kind}")
 
         self.nl()
         self.emitter.emit_process_inst()
@@ -426,8 +421,7 @@ class Parser:
         elif self.check_token(TokenType.PILA) or self.check_peek(TokenType.PILA):
             self.empty_stack_condition()
         else:
-            self.abort("Se esperaba LA PILA, PILA, LA CARTA, CARTA. En cambio, se encuentra {}".format(
-                self.cur_token.text))
+            self.abort(f"Se esperaba LA PILA, PILA, LA CARTA, CARTA. En cambio, se encuentra {self.cur_token.text}")
 
     # <condicion de pila vacia> := <pila> <nombre> ESTA VACIA | <pila> <nombre> NO ESTA VACIA
     def empty_stack_condition(self):
@@ -449,8 +443,7 @@ class Parser:
             self.emitter.append_opcode("E")
 
         else:
-            self.abort("Se esperaba NO ESTA, ESTA. En cambio, se encuentra {}".format(
-                self.cur_token.text))
+            self.abort(f"Se esperaba NO ESTA, ESTA. En cambio, se encuentra {self.cur_token.text}")
 
     # <condicion de carta> := <estado> | <caracteristica>
     # <estado> := <carta> ESTA BOCA ABAJO | <carta> NO ESTA BOCA ABAJO
@@ -538,8 +531,7 @@ class Parser:
                 self.next_token()
 
         else:
-            self.abort("Se esperaba una relacion; IGUAL, DISTINTO, MAYOR, MENOR... En cambio, se encuentra {}".format(
-                self.cur_token.text))
+            self.abort(f"Se esperaba una relacion; IGUAL, DISTINTO, MAYOR, MENOR... En cambio, se encuentra {self.cur_token.text}")
 
     # <relacion> := IGUAL A | DISTINTO DE | MAYOR QUE | MENOR QUE | MAYOR O IGUAL A | MENOR O IGUAL A
 
@@ -573,8 +565,7 @@ class Parser:
                 self.emitter.append_opcode("<")
 
         else:
-            self.abort("Se esperaba una relacion; IGUAL, DISTINTO, MAYOR, MENOR... En cambio, se encuentra {}".format(
-                self.cur_token.text))
+            self.abort(f"Se esperaba una relacion; IGUAL, DISTINTO, MAYOR, MENOR... En cambio, se encuentra {self.cur_token.text}")
 
     # <de palos> := DEL PALO <palos> | <palos>
 
@@ -598,8 +589,7 @@ class Parser:
             self.emitter.append_opcode("E")
 
         else:
-            self.abort("Esperado NO ESTA... O ESTA... En cambio, se encuentra {}".format(
-                self.cur_token))
+            self.abort(f"Esperado NO ESTA... O ESTA... En cambio, se encuentra {self.cur_token}")
 
         self.emitter.append_opcode("F")
 
@@ -625,8 +615,7 @@ class Parser:
             # emit
             self.emitter.append_opcode("N")
         else:
-            self.abort("Esperado ES o NO ES. En cambio, se encuentra {}".format(
-                self.cur_token.text))
+            self.abort(f"Esperado ES o NO ES. En cambio, se encuentra {self.cur_token.text}")
 
     def card(self):
         if self.check_token(TokenType.LA):
@@ -636,7 +625,7 @@ class Parser:
             self.next_token()
         else:
             self.abort(
-                "Se esperaba LA CARTA O CARTA, en cambio se encuentra {}".format(self.cur_token.text))
+                f"Se esperaba LA CARTA O CARTA, en cambio se encuentra {self.cur_token.text}")
 
     # nl+ ::= '\n'+
 
