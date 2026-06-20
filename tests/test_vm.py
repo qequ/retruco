@@ -1,7 +1,8 @@
 import unittest
-from virtual_machine.vm import VirtualMachine
-from virtual_machine.cards import Position
-from syntax_checker import checker
+
+from retruco.virtual_machine.cards import Position
+from retruco.virtual_machine.vm import VirtualMachine
+
 
 class TestLogicDecoder(unittest.TestCase):
 

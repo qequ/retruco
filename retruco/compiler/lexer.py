@@ -1,5 +1,5 @@
+import sys
 from enum import Enum
-from os import sys
 
 
 class Lexer:
@@ -78,7 +78,7 @@ class Lexer:
             # Get the substring.
             tokText = self.source[startPos: self.cur_pos + 1]
             keyword = Token.checkIfKeyword(tokText)
-            if keyword == None:  # Identifier
+            if keyword is None:  # Identifier
                 token = Token(tokText, TokenType.IDENT)
             else:   # Keyword
                 token = Token(tokText, keyword)
@@ -151,7 +151,7 @@ class TokenType(Enum):
     MIENTRAS = 29
     NADA = 30
     NO = 31
-    O = 32
+    O = 32  # noqa: E741 - TIMBA keyword for logical OR
     OROS = 33
     PILA = 34
     PROGRAMA = 35

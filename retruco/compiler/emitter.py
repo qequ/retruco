@@ -1,4 +1,4 @@
-class Emitter():
+class Emitter:
     def __init__(self):
         self.opcode_str = ""
         self.stacks_instructions = []

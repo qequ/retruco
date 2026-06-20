@@ -1,7 +1,8 @@
 import tkinter as tk
-from syntax_checker import checker
-from virtual_machine.vm import VirtualMachine
 import tkinter.scrolledtext as scrolledtext
+
+from .syntax_checker import checker
+from .virtual_machine.vm import VirtualMachine
 
 
 class Retruco(tk.Tk):
@@ -117,7 +118,7 @@ class Retruco(tk.Tk):
                 timba_machine.machine_status = "\n".join(mach_list)
 
                 txt_widget.insert(
-                    tk.END, "INSTRUCCIÓN: {}\n".format(timba_machine.pc-1))
+                    tk.END, f"INSTRUCCIÓN: {timba_machine.pc-1}\n")
                 txt_widget.insert(tk.END, timba_machine.machine_status)
                 txt_widget.insert(
                     tk.END, "--------------------------------------\n")
@@ -443,7 +444,7 @@ class Retruco(tk.Tk):
         def add_opcode(self, type_op, stack_name=None, opcode_append="", additional_string=""):
             self.ucp_instructions.config(state=tk.NORMAL)
             self.ucp_instructions.insert(
-                tk.END, "{} ".format(self.inst_counter))
+                tk.END, f"{self.inst_counter} ")
             self.ucp_instructions.config(state=tk.DISABLED)
 
             if type_op == 0:
@@ -452,7 +453,7 @@ class Retruco(tk.Tk):
                 # add to the editor (ucp_instructions) the instruction "TOME UNA CARTA DE LA PILA {stack_name}"
                 self.ucp_instructions.config(state=tk.NORMAL)
                 self.ucp_instructions.insert(
-                    tk.END, "TOME UNA CARTA DE LA PILA {}\n".format(stack_name))
+                    tk.END, f"TOME UNA CARTA DE LA PILA {stack_name}\n")
                 self.ucp_instructions.config(state=tk.DISABLED)
             elif type_op == 1:
                 self.opcodes.append(
@@ -460,7 +461,7 @@ class Retruco(tk.Tk):
                 # add to the editor (ucp_instructions) the instruction "DEPOSITE LA CARTA EN LA PILA {stack_name}"
                 self.ucp_instructions.config(state=tk.NORMAL)
                 self.ucp_instructions.insert(
-                    tk.END, "DEPOSITE LA CARTA EN LA PILA {}\n".format(stack_name))
+                    tk.END, f"DEPOSITE LA CARTA EN LA PILA {stack_name}\n")
                 self.ucp_instructions.config(state=tk.DISABLED)
 
             elif type_op == 2:
@@ -474,7 +475,7 @@ class Retruco(tk.Tk):
                 self.opcodes.append("3" + opcode_append)
                 self.ucp_instructions.config(state=tk.NORMAL)
                 self.ucp_instructions.insert(
-                    tk.END, "SI {}\n".format(additional_string))
+                    tk.END, f"SI {additional_string}\n")
                 self.ucp_instructions.config(state=tk.DISABLED)
 
             elif type_op == 4:
@@ -495,7 +496,7 @@ class Retruco(tk.Tk):
                 self.opcodes.append("7" + opcode_append)
                 self.ucp_instructions.config(state=tk.NORMAL)
                 self.ucp_instructions.insert(
-                    tk.END, "MIENTRAS {}\n".format(additional_string))
+                    tk.END, f"MIENTRAS {additional_string}\n")
                 self.ucp_instructions.config(state=tk.DISABLED)
 
             elif type_op == 8:
@@ -590,11 +591,10 @@ class Retruco(tk.Tk):
             opcode = str(self.stacks_names.index(
                 stack_name)) + type_card[0] + value_card + pos
             lbl.config(
-                text="La carta se añadió a la Pila {}".format(stack_name))
+                text=f"La carta se añadió a la Pila {stack_name}")
             self.stacks_opcodes.append(opcode)
             self.stack_set_instruction.config(state=tk.NORMAL)
-            self.stack_set_instruction.insert(tk.END, "AÑADA {} DE {} {} A '{}'\n".format(
-                value_card, type_card, pos_card, stack_name))
+            self.stack_set_instruction.insert(tk.END, f"AÑADA {value_card} DE {type_card} {pos_card} A '{stack_name}'\n")
             self.stack_set_instruction.config(state=tk.DISABLED)
 
         def add_stack(self):
@@ -627,5 +627,5 @@ class Retruco(tk.Tk):
                 str(self.stacks_names.index(name_stack)))
             self.stack_set_instruction.config(state=tk.NORMAL)
             self.stack_set_instruction.insert(
-                tk.END, "CREE LA PILA {}\n".format(name_stack))
+                tk.END, f"CREE LA PILA {name_stack}\n")
             self.stack_set_instruction.config(state=tk.DISABLED)

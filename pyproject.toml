@@ -1,0 +1,46 @@
+[project]
+name = "retruco"
+version = "0.1.0"
+description = "A virtual machine and interpreter for the TIMBA language."
+authors = [{ name = "Alvaro Frias", email = "alvarofriasgaray@gmail.com" }]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["interpreter", "timba", "esolang", "virtual-machine", "cards"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Interpreters",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/qequ/retruco"
+Repository = "https://github.com/qequ/retruco"
+
+[project.scripts]
+retruco = "retruco.cli:main"
+
+[tool.poetry]
+packages = [{ include = "retruco" }]
+include = [
+    { path = "retruco/grammar.txt", format = ["sdist", "wheel"] },
+    { path = "retruco/logo/*", format = ["sdist", "wheel"] },
+]
+
+[tool.poetry.group.dev.dependencies]
+ruff = ">=0.15.0"
+pytest = ">=8.0"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "B", "UP"]
+ignore = ["E501"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,6 +1,6 @@
 def checker_O2(opcodes_list):
     """
-    given a list of opcodes checks that the 
+    given a list of opcodes checks that the
     """
     filtered_l = list(filter(lambda s: any(s.startswith(x)
                       for x in "34578"), opcodes_list))
@@ -54,7 +54,7 @@ def checker_O2(opcodes_list):
                 return False
 
         else:
-            if not i in correct_indexes:
+            if i not in correct_indexes:
                 return False
 
     return True

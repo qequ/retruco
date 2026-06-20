@@ -1,68 +1,5 @@
-# Retruco
-
-![Retroco_logo](/src/logo/timba.png)
-
-A virtual machine and interpreter for the [TIMBA](http://dirinfo.unsl.edu.ar/servicios/abm/assets/uploads/materiales/ddafb-timba-2018.pdf) language.
-
-
-Un intérprete para el lenguaje de programación [TIMBA](http://dirinfo.unsl.edu.ar/servicios/abm/assets/uploads/materiales/ddafb-timba-2018.pdf)
-
-# Prerequisites
-
-1. Python 3.8+
-2. Tkinter (only for the GUI; it ships with most Python installs)
-
-# Installation
-
-From a release artifact:
-```
-pip install retruco-0.1.0-py3-none-any.whl
-```
-
-From source (using [Poetry](https://python-poetry.org/)):
-```
-poetry install
-```
-
-# Usage
-
-Run a TIMBA program:
-```
-retruco path/to/program.timba
-```
-
-Open the editor (GUI):
-```
-retruco --gui
-```
-
-Show the generated opcodes and per-instruction stack states:
-```
-retruco --debug path/to/program.timba
-```
-
-Without installing, from the source tree:
-```
-python -m retruco path/to/program.timba
-```
-
-# Example programs
-
-## Hello Timba
-The language can't handle strings so the most basic program is taking a card from a stack;
-
-```
-UCP EJECUTE CON LAS SIGUIENTES CARTAS
-LA PILA HOLATIMBA TIENE 1 DE ESPADAS BOCA ARRIBA;
-
-DEFINICION DE PROGRAMA
-TOME UNA CARTA DE LA PILA HOLATIMBA
-
-```
-
-## Sorting a stack
-
-```
+# Ordena una pila de cartas (valores unicos) de menor a mayor en TMPSTACK.
+# Es una ordenacion por insercion usando AUXILIAR/AUXILIAR2 como apoyo.
 UCP EJECUTE CON LAS SIGUIENTES CARTAS
 LA PILA INPUT TIENE       10 DE BASTOS BOCA ARRIBA -
                           7 DE BASTOS BOCA ARRIBA -
@@ -83,7 +20,7 @@ MIENTRAS LA PILA INPUT NO ESTA VACIA
     TOME UNA CARTA DE LA PILA INPUT
 
     MIENTRAS LA PILA TMPSTACK NO ESTA VACIA
-        SI LA CARTA ES DE MENOR VALOR QUE TOPE DE PILA TMPSTACK
+        SI LA CARTA ES DE MENOR O IGUAL VALOR QUE TOPE DE PILA TMPSTACK
             # TOMAR EL TOPE DE PILA DE TMPSTACK Y PONERLO EN STACK DE INPUT
             # ANTES DEPOSITAR LA CARTA TMP EN AUXILIAR
             DEPOSITE LA CARTA EN PILA AUXILIAR
@@ -96,7 +33,7 @@ MIENTRAS LA PILA INPUT NO ESTA VACIA
         SINO
             # NO HAY BREAK ASI QUE HAY QUE SACAR TODAS LAS CARTAS DE TMPSTACK ASI SE ROMPE EL WHILE
 
-            #depositamos tmp en auxiliar 
+            #depositamos tmp en auxiliar
             DEPOSITE LA CARTA EN PILA AUXILIAR
 
             MIENTRAS LA PILA TMPSTACK NO ESTA VACIA
@@ -125,11 +62,3 @@ MIENTRAS LA PILA INPUT NO ESTA VACIA
     DEPOSITE LA CARTA EN PILA TMPSTACK
 
 REPITA
-
-```
-
-# TODO
-- [ ] A setup script
-
-# License
-MIT License Copyright (c) 2021 Alvaro Frias
