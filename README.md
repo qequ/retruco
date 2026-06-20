@@ -1,6 +1,6 @@
 # Retruco
 
-![Retroco_logo](/src/logo/timba.png)
+![Retroco_logo](retruco/logo/timba.png)
 
 A virtual machine and interpreter for the [TIMBA](http://dirinfo.unsl.edu.ar/servicios/abm/assets/uploads/materiales/ddafb-timba-2018.pdf) language.
 
@@ -129,7 +129,7 @@ REPITA
 ```
 
 # TODO
-- [ ] A setup script
+- [x] A setup script
 
 # License
 MIT License Copyright (c) 2021 Alvaro Frias
