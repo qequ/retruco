@@ -5,7 +5,7 @@ description = "A virtual machine and interpreter for the TIMBA language."
 authors = [{ name = "Alvaro Frias", email = "alvarofriasgaray@gmail.com" }]
 license = "MIT"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 keywords = ["interpreter", "timba", "esolang", "virtual-machine", "cards"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -34,7 +34,7 @@ ruff = ">=0.15.0"
 pytest = ">=8.0"
 
 [tool.ruff]
-target-version = "py38"
+target-version = "py39"
 line-length = 88
 
 [tool.ruff.lint]
