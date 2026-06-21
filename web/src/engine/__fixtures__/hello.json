@@ -1,0 +1,38 @@
+{
+  "source": "# El programa mas basico: tomar una carta de una pila.\nUCP EJECUTE CON LAS SIGUIENTES CARTAS\nLA PILA HOLATIMBA TIENE 1 DE ESPADAS BOCA ARRIBA;\n\nDEFINICION DE PROGRAMA\nTOME UNA CARTA DE LA PILA HOLATIMBA\n",
+  "stackOrder": [
+    "HOLATIMBA"
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "pc": null,
+      "opcode": null,
+      "stacks": {
+        "HOLATIMBA": [
+          {
+            "v": 1,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 1,
+      "pc": 0,
+      "opcode": "00",
+      "stacks": {
+        "HOLATIMBA": []
+      },
+      "hand": {
+        "v": 1,
+        "p": "E",
+        "f": "up"
+      }
+    }
+  ],
+  "halted": "ok",
+  "error": null
+}

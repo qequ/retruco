@@ -1,0 +1,379 @@
+{
+  "source": "# Mueve todas las cartas de ORIGEN a DESTINO (invirtiendo el orden).\n# Demuestra el ciclo MIENTRAS con TOME/DEPOSITE.\nUCP EJECUTE CON LAS SIGUIENTES CARTAS\nLA PILA ORIGEN TIENE 1 DE OROS BOCA ARRIBA -\n                     2 DE OROS BOCA ARRIBA -\n                     3 DE OROS BOCA ARRIBA,\nLA PILA DESTINO NO TIENE CARTAS;\n\nDEFINICION DE PROGRAMA\nMIENTRAS LA PILA ORIGEN NO ESTA VACIA\n    TOME UNA CARTA DE LA PILA ORIGEN\n    DEPOSITE LA CARTA EN PILA DESTINO\nREPITA\n",
+  "stackOrder": [
+    "ORIGEN",
+    "DESTINO"
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "pc": null,
+      "opcode": null,
+      "stacks": {
+        "ORIGEN": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": []
+      },
+      "hand": null
+    },
+    {
+      "index": 1,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "ORIGEN": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": []
+      },
+      "hand": null
+    },
+    {
+      "index": 2,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "ORIGEN": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": []
+      },
+      "hand": {
+        "v": 3,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 3,
+      "pc": 2,
+      "opcode": "11",
+      "stacks": {
+        "ORIGEN": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 4,
+      "pc": 3,
+      "opcode": "8",
+      "stacks": {
+        "ORIGEN": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 5,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "ORIGEN": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 6,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "ORIGEN": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 7,
+      "pc": 2,
+      "opcode": "11",
+      "stacks": {
+        "ORIGEN": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 8,
+      "pc": 3,
+      "opcode": "8",
+      "stacks": {
+        "ORIGEN": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 9,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "ORIGEN": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 10,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "ORIGEN": [],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 1,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 11,
+      "pc": 2,
+      "opcode": "11",
+      "stacks": {
+        "ORIGEN": [],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 12,
+      "pc": 3,
+      "opcode": "8",
+      "stacks": {
+        "ORIGEN": [],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 13,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "ORIGEN": [],
+        "DESTINO": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    }
+  ],
+  "halted": "ok",
+  "error": null
+}

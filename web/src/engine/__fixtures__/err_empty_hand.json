@@ -1,0 +1,46 @@
+{
+  "source": "UCP EJECUTE CON LAS SIGUIENTES CARTAS\nLA PILA MAZO TIENE 1 DE OROS BOCA ARRIBA,\nLA PILA DESTINO NO TIENE CARTAS;\n\nDEFINICION DE PROGRAMA\nDEPOSITE LA CARTA EN PILA DESTINO\n",
+  "stackOrder": [
+    "MAZO",
+    "DESTINO"
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "pc": null,
+      "opcode": null,
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": []
+      },
+      "hand": null
+    },
+    {
+      "index": 1,
+      "pc": 0,
+      "opcode": "11",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "DESTINO": []
+      },
+      "hand": null
+    }
+  ],
+  "halted": "error",
+  "error": {
+    "code": 3,
+    "name": "EMPTY_HAND_ERROR"
+  }
+}

@@ -1,0 +1,9052 @@
+{
+  "source": "# Igual que sort.timba pero con valores repetidos (dos 7 y dos 5).\n# Usa MENOR (estricto): con MENOR O IGUAL las cartas de igual valor\n# entran en un ciclo infinito.\nUCP EJECUTE CON LAS SIGUIENTES CARTAS\nLA PILA INPUT TIENE       7 DE BASTOS BOCA ARRIBA -\n                          5 DE OROS BOCA ARRIBA -\n                          7 DE ESPADAS BOCA ARRIBA -\n                          2 DE COPAS BOCA ARRIBA -\n                          5 DE COPAS BOCA ARRIBA,\n\nLA PILA TMPSTACK NO TIENE CARTAS,\nLA PILA AUXILIAR NO TIENE CARTAS,\nLA PILA AUXILIAR2 NO TIENE CARTAS;\n\n\nDEFINICION DE PROGRAMA\nMIENTRAS LA PILA INPUT NO ESTA VACIA\n\n    TOME UNA CARTA DE LA PILA INPUT\n\n    MIENTRAS LA PILA TMPSTACK NO ESTA VACIA\n        SI LA CARTA ES DE MENOR VALOR QUE TOPE DE PILA TMPSTACK\n            DEPOSITE LA CARTA EN PILA AUXILIAR\n\n            TOME UNA CARTA DE PILA TMPSTACK\n            DEPOSITE LA CARTA EN PILA INPUT\n            TOME UNA CARTA DE PILA AUXILIAR\n\n\n        SINO\n            DEPOSITE LA CARTA EN PILA AUXILIAR\n\n            MIENTRAS LA PILA TMPSTACK NO ESTA VACIA\n                TOME UNA CARTA DE PILA TMPSTACK\n                DEPOSITE LA CARTA EN PILA AUXILIAR2\n            REPITA\n\n            TOME UNA CARTA DE PILA AUXILIAR\n        NADA MAS\n\n    REPITA\n\n    DEPOSITE LA CARTA EN PILA AUXILIAR\n\n    SI LA PILA TMPSTACK ESTA VACIA Y LA PILA AUXILIAR2 NO ESTA VACIA\n        MIENTRAS LA PILA AUXILIAR2 NO ESTA VACIA\n            TOME UNA CARTA DE PILA AUXILIAR2\n            DEPOSITE LA CARTA EN PILA TMPSTACK\n        REPITA\n    SINO\n    NADA MAS\n\n    TOME UNA CARTA DE PILA AUXILIAR\n    DEPOSITE LA CARTA EN PILA TMPSTACK\n\nREPITA\n",
+  "stackOrder": [
+    "INPUT",
+    "TMPSTACK",
+    "AUXILIAR",
+    "AUXILIAR2"
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "pc": null,
+      "opcode": null,
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 1,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 2,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 3,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 4,
+      "pc": 17,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 5,
+      "pc": 18,
+      "opcode": "3P1E&P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 6,
+      "pc": 23,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 7,
+      "pc": 24,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 8,
+      "pc": 25,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 9,
+      "pc": 26,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 10,
+      "pc": 27,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 11,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 12,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 13,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 14,
+      "pc": 3,
+      "opcode": "3CE<P1",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 15,
+      "pc": 4,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 16,
+      "pc": 5,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 17,
+      "pc": 6,
+      "opcode": "10",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 18,
+      "pc": 7,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 19,
+      "pc": 8,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 20,
+      "pc": 15,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 21,
+      "pc": 16,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 22,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 23,
+      "pc": 17,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 24,
+      "pc": 18,
+      "opcode": "3P1E&P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 25,
+      "pc": 23,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 26,
+      "pc": 24,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 27,
+      "pc": 25,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 28,
+      "pc": 26,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 29,
+      "pc": 27,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 30,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 31,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 32,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 33,
+      "pc": 3,
+      "opcode": "3CE<P1",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 34,
+      "pc": 8,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 35,
+      "pc": 9,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 36,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 37,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 38,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 39,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 40,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 41,
+      "pc": 14,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 42,
+      "pc": 15,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 43,
+      "pc": 16,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 44,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 45,
+      "pc": 17,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 46,
+      "pc": 18,
+      "opcode": "3P1E&P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 47,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 48,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 49,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 50,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 51,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 52,
+      "pc": 23,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 53,
+      "pc": 24,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 54,
+      "pc": 25,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 55,
+      "pc": 26,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 56,
+      "pc": 27,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 57,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 58,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 59,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 60,
+      "pc": 3,
+      "opcode": "3CE<P1",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 61,
+      "pc": 8,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 62,
+      "pc": 9,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 63,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 64,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 65,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 66,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 67,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 68,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 69,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 70,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 71,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 72,
+      "pc": 14,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 73,
+      "pc": 15,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 74,
+      "pc": 16,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 75,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 76,
+      "pc": 17,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 77,
+      "pc": 18,
+      "opcode": "3P1E&P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 78,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 79,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 80,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 81,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 82,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 83,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 84,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 85,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 86,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 87,
+      "pc": 23,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 88,
+      "pc": 24,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 89,
+      "pc": 25,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 90,
+      "pc": 26,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 91,
+      "pc": 27,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 92,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 93,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 94,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 95,
+      "pc": 3,
+      "opcode": "3CE<P1",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 96,
+      "pc": 4,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 97,
+      "pc": 5,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 98,
+      "pc": 6,
+      "opcode": "10",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 99,
+      "pc": 7,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 100,
+      "pc": 8,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 101,
+      "pc": 15,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 102,
+      "pc": 16,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 103,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 104,
+      "pc": 3,
+      "opcode": "3CE<P1",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 105,
+      "pc": 8,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 106,
+      "pc": 9,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 107,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 108,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 109,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 110,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 111,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 112,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 113,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 114,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 115,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 116,
+      "pc": 14,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 117,
+      "pc": 15,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 118,
+      "pc": 16,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 119,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 120,
+      "pc": 17,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 121,
+      "pc": 18,
+      "opcode": "3P1E&P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 122,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 123,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 124,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 125,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 126,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 127,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 128,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 129,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 130,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 131,
+      "pc": 23,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 132,
+      "pc": 24,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 133,
+      "pc": 25,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 134,
+      "pc": 26,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 135,
+      "pc": 27,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 136,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 137,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 138,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 139,
+      "pc": 3,
+      "opcode": "3CE<P1",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 140,
+      "pc": 8,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 141,
+      "pc": 9,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 142,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 143,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 144,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 145,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 146,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 147,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 148,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 149,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 150,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 151,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 152,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 153,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 154,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 155,
+      "pc": 14,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 156,
+      "pc": 15,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 157,
+      "pc": 16,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 158,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 159,
+      "pc": 17,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 160,
+      "pc": 18,
+      "opcode": "3P1E&P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 161,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 162,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 163,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 164,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 165,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 166,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 167,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 168,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 169,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 170,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 171,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 172,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 173,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 174,
+      "pc": 23,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 175,
+      "pc": 24,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 176,
+      "pc": 25,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 177,
+      "pc": 26,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 178,
+      "pc": 27,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 179,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "INPUT": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 180,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "B",
+        "f": "up"
+      }
+    },
+    {
+      "index": 181,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "B",
+        "f": "up"
+      }
+    },
+    {
+      "index": 182,
+      "pc": 3,
+      "opcode": "3CE<P1",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "B",
+        "f": "up"
+      }
+    },
+    {
+      "index": 183,
+      "pc": 8,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "B",
+        "f": "up"
+      }
+    },
+    {
+      "index": 184,
+      "pc": 9,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 185,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 186,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 187,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 188,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 189,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 190,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 191,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 192,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 193,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 194,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 195,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 196,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 197,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 198,
+      "pc": 11,
+      "opcode": "01",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 199,
+      "pc": 12,
+      "opcode": "13",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 200,
+      "pc": 13,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 201,
+      "pc": 10,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 202,
+      "pc": 14,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "B",
+        "f": "up"
+      }
+    },
+    {
+      "index": 203,
+      "pc": 15,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "B",
+        "f": "up"
+      }
+    },
+    {
+      "index": 204,
+      "pc": 16,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "B",
+        "f": "up"
+      }
+    },
+    {
+      "index": 205,
+      "pc": 2,
+      "opcode": "7P1N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 7,
+        "p": "B",
+        "f": "up"
+      }
+    },
+    {
+      "index": 206,
+      "pc": 17,
+      "opcode": "12",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 207,
+      "pc": 18,
+      "opcode": "3P1E&P3N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 208,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 209,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 210,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 211,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 212,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 213,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 214,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 215,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 216,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 217,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 218,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 219,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 220,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": [
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 221,
+      "pc": 20,
+      "opcode": "03",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 222,
+      "pc": 21,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 223,
+      "pc": 22,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 224,
+      "pc": 19,
+      "opcode": "7P3N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 225,
+      "pc": 23,
+      "opcode": "4",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 226,
+      "pc": 24,
+      "opcode": "5",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 227,
+      "pc": 25,
+      "opcode": "02",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": {
+        "v": 7,
+        "p": "B",
+        "f": "up"
+      }
+    },
+    {
+      "index": 228,
+      "pc": 26,
+      "opcode": "11",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 229,
+      "pc": 27,
+      "opcode": "8",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    },
+    {
+      "index": 230,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "INPUT": [],
+        "TMPSTACK": [
+          {
+            "v": 2,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 7,
+            "p": "B",
+            "f": "up"
+          }
+        ],
+        "AUXILIAR": [],
+        "AUXILIAR2": []
+      },
+      "hand": null
+    }
+  ],
+  "halted": "ok",
+  "error": null
+}

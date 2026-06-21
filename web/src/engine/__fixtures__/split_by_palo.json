@@ -1,0 +1,999 @@
+{
+  "source": "# Separa las cartas: las de OROS van a una pila, el resto a otra.\n# Demuestra SI / SINO / NADA MAS junto con una condicion de palo.\nUCP EJECUTE CON LAS SIGUIENTES CARTAS\nLA PILA MAZO TIENE 1 DE OROS BOCA ARRIBA -\n                   2 DE ESPADAS BOCA ARRIBA -\n                   3 DE OROS BOCA ARRIBA -\n                   4 DE COPAS BOCA ARRIBA,\nLA PILA MONEDAS NO TIENE CARTAS,\nLA PILA RESTO NO TIENE CARTAS;\n\nDEFINICION DE PROGRAMA\nMIENTRAS LA PILA MAZO NO ESTA VACIA\n    TOME UNA CARTA DE LA PILA MAZO\n    SI LA CARTA ES OROS\n        DEPOSITE LA CARTA EN PILA MONEDAS\n    SINO\n        DEPOSITE LA CARTA EN PILA RESTO\n    NADA MAS\nREPITA\n",
+  "stackOrder": [
+    "MAZO",
+    "MONEDAS",
+    "RESTO"
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "pc": null,
+      "opcode": null,
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": []
+      },
+      "hand": null
+    },
+    {
+      "index": 1,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": []
+      },
+      "hand": null
+    },
+    {
+      "index": 2,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": []
+      },
+      "hand": {
+        "v": 4,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 3,
+      "pc": 2,
+      "opcode": "3CEO",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": []
+      },
+      "hand": {
+        "v": 4,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 4,
+      "pc": 4,
+      "opcode": "4",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": []
+      },
+      "hand": {
+        "v": 4,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 5,
+      "pc": 5,
+      "opcode": "12",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 6,
+      "pc": 6,
+      "opcode": "5",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 7,
+      "pc": 7,
+      "opcode": "8",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 8,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          },
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 9,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 3,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 10,
+      "pc": 2,
+      "opcode": "3CEO",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 3,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 11,
+      "pc": 3,
+      "opcode": "11",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 12,
+      "pc": 4,
+      "opcode": "4",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 13,
+      "pc": 6,
+      "opcode": "5",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 14,
+      "pc": 7,
+      "opcode": "8",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 15,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 16,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 17,
+      "pc": 2,
+      "opcode": "3CEO",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 18,
+      "pc": 4,
+      "opcode": "4",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 2,
+        "p": "E",
+        "f": "up"
+      }
+    },
+    {
+      "index": 19,
+      "pc": 5,
+      "opcode": "12",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 20,
+      "pc": 6,
+      "opcode": "5",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 21,
+      "pc": 7,
+      "opcode": "8",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 22,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 23,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "MAZO": [],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 1,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 24,
+      "pc": 2,
+      "opcode": "3CEO",
+      "stacks": {
+        "MAZO": [],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 1,
+        "p": "O",
+        "f": "up"
+      }
+    },
+    {
+      "index": 25,
+      "pc": 3,
+      "opcode": "11",
+      "stacks": {
+        "MAZO": [],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 26,
+      "pc": 4,
+      "opcode": "4",
+      "stacks": {
+        "MAZO": [],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 27,
+      "pc": 6,
+      "opcode": "5",
+      "stacks": {
+        "MAZO": [],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 28,
+      "pc": 7,
+      "opcode": "8",
+      "stacks": {
+        "MAZO": [],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 29,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "MAZO": [],
+        "MONEDAS": [
+          {
+            "v": 3,
+            "p": "O",
+            "f": "up"
+          },
+          {
+            "v": 1,
+            "p": "O",
+            "f": "up"
+          }
+        ],
+        "RESTO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 2,
+            "p": "E",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    }
+  ],
+  "halted": "ok",
+  "error": null
+}

@@ -1,0 +1,455 @@
+{
+  "source": "# Da vuelta todas las cartas (de BOCA ABAJO a BOCA ARRIBA) y las\n# pasa a otra pila. Demuestra la instruccion INVIERTA LA CARTA.\nUCP EJECUTE CON LAS SIGUIENTES CARTAS\nLA PILA MAZO TIENE 4 DE COPAS BOCA ABAJO -\n                   5 DE COPAS BOCA ABAJO -\n                   6 DE COPAS BOCA ABAJO,\nLA PILA RESULTADO NO TIENE CARTAS;\n\nDEFINICION DE PROGRAMA\nMIENTRAS LA PILA MAZO NO ESTA VACIA\n    TOME UNA CARTA DE LA PILA MAZO\n    INVIERTA LA CARTA\n    DEPOSITE LA CARTA EN PILA RESULTADO\nREPITA\n",
+  "stackOrder": [
+    "MAZO",
+    "RESULTADO"
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "pc": null,
+      "opcode": null,
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "down"
+          },
+          {
+            "v": 6,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": []
+      },
+      "hand": null
+    },
+    {
+      "index": 1,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "down"
+          },
+          {
+            "v": 6,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": []
+      },
+      "hand": null
+    },
+    {
+      "index": 2,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": []
+      },
+      "hand": {
+        "v": 6,
+        "p": "C",
+        "f": "down"
+      }
+    },
+    {
+      "index": 3,
+      "pc": 2,
+      "opcode": "2",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": []
+      },
+      "hand": {
+        "v": 6,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 4,
+      "pc": 3,
+      "opcode": "11",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 5,
+      "pc": 4,
+      "opcode": "8",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 6,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 7,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "down"
+      }
+    },
+    {
+      "index": 8,
+      "pc": 2,
+      "opcode": "2",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 5,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 9,
+      "pc": 3,
+      "opcode": "11",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 10,
+      "pc": 4,
+      "opcode": "8",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 11,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "MAZO": [
+          {
+            "v": 4,
+            "p": "C",
+            "f": "down"
+          }
+        ],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 12,
+      "pc": 1,
+      "opcode": "00",
+      "stacks": {
+        "MAZO": [],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 4,
+        "p": "C",
+        "f": "down"
+      }
+    },
+    {
+      "index": 13,
+      "pc": 2,
+      "opcode": "2",
+      "stacks": {
+        "MAZO": [],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": {
+        "v": 4,
+        "p": "C",
+        "f": "up"
+      }
+    },
+    {
+      "index": 14,
+      "pc": 3,
+      "opcode": "11",
+      "stacks": {
+        "MAZO": [],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 15,
+      "pc": 4,
+      "opcode": "8",
+      "stacks": {
+        "MAZO": [],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    },
+    {
+      "index": 16,
+      "pc": 0,
+      "opcode": "7P0N",
+      "stacks": {
+        "MAZO": [],
+        "RESULTADO": [
+          {
+            "v": 6,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 5,
+            "p": "C",
+            "f": "up"
+          },
+          {
+            "v": 4,
+            "p": "C",
+            "f": "up"
+          }
+        ]
+      },
+      "hand": null
+    }
+  ],
+  "halted": "ok",
+  "error": null
+}

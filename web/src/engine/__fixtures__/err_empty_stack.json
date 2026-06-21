@@ -1,0 +1,31 @@
+{
+  "source": "UCP EJECUTE CON LAS SIGUIENTES CARTAS\nLA PILA MAZO NO TIENE CARTAS;\n\nDEFINICION DE PROGRAMA\nTOME UNA CARTA DE LA PILA MAZO\n",
+  "stackOrder": [
+    "MAZO"
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "pc": null,
+      "opcode": null,
+      "stacks": {
+        "MAZO": []
+      },
+      "hand": null
+    },
+    {
+      "index": 1,
+      "pc": 0,
+      "opcode": "00",
+      "stacks": {
+        "MAZO": []
+      },
+      "hand": null
+    }
+  ],
+  "halted": "error",
+  "error": {
+    "code": 2,
+    "name": "EMPTY_STACK_ERROR"
+  }
+}
