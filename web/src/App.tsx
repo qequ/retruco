@@ -80,6 +80,22 @@ function App() {
           </span>
         )}
       </div>
+
+      <footer className="credits">
+        Cartas:{" "}
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Baraja_espa%C3%B1ola_completa.png"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Baraja Española
+        </a>{" "}
+        por Basquetteur (Wikimedia Commons),{" "}
+        <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noreferrer">
+          CC BY-SA 3.0
+        </a>
+        .
+      </footer>
     </div>
   );
 }

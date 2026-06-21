@@ -73,7 +73,7 @@
 }
 
 .stack-cards .card + .card {
-  margin-top: -62px;
+  margin-top: -74px;
 }
 
 .hand-zone {
@@ -93,54 +93,19 @@
 
 /* ---- Cards ---- */
 .card {
-  position: relative;
-  width: 60px;
-  height: 84px;
-  background: #fbfbf7;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
+  display: block;
+  width: 64px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   user-select: none;
-}
-
-.card-pip {
-  font-size: 30px;
-  line-height: 1;
-}
-
-.card-corner {
-  position: absolute;
-  font-size: 11px;
-  line-height: 1.05;
-  text-align: center;
-  font-weight: 700;
-}
-
-.card-corner-tl {
-  top: 5px;
-  left: 6px;
-}
-
-.card-corner-br {
-  bottom: 5px;
-  right: 6px;
-  transform: rotate(180deg);
-}
-
-.card-down {
-  background:
-    repeating-linear-gradient(45deg, #2b4a8b, #2b4a8b 6px, #35589e 6px, #35589e 12px);
-  border: 1px solid #1b2f5c;
 }
 
 .card-active {
   outline: 3px solid var(--accent);
   outline-offset: 1px;
-  box-shadow: 0 0 12px rgba(192, 132, 252, 0.7);
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(192, 132, 252, 0.8);
 }
 
 .slot-empty {
@@ -148,9 +113,9 @@
   font-size: 12px;
   font-style: italic;
   border: 1px dashed var(--border);
-  border-radius: 8px;
-  width: 60px;
-  height: 84px;
+  border-radius: 6px;
+  width: 64px;
+  aspect-ratio: 207 / 319;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -209,6 +174,17 @@
   padding: 2px 7px;
   color: var(--text);
   font-family: ui-monospace, Consolas, monospace;
+}
+
+.credits {
+  margin-top: 40px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.credits a {
+  color: var(--muted);
+  text-decoration: underline;
 }
 
 .halt {

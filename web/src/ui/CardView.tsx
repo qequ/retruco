@@ -1,5 +1,5 @@
 import type { CardRepr } from "../engine/types";
-import { PALOS } from "./palos";
+import { cardBackSrc, cardImageSrc, PALOS } from "./palos";
 
 interface CardViewProps {
   card: CardRepr;
@@ -8,29 +8,22 @@ interface CardViewProps {
 }
 
 export function CardView({ card, active }: CardViewProps) {
+  const className = `card${active ? " card-active" : ""}`;
+
   if (card.f === "down") {
-    return <div className={`card card-down${active ? " card-active" : ""}`} aria-label="carta boca abajo" />;
+    return (
+      <img className={className} src={cardBackSrc()} alt="carta boca abajo" draggable={false} />
+    );
   }
 
-  const palo = PALOS[card.p];
+  const label = `${card.v} de ${PALOS[card.p].name}`;
   return (
-    <div
-      className={`card${active ? " card-active" : ""}`}
-      style={{ color: palo.color }}
-      aria-label={`${card.v} de ${palo.name}`}
-      title={`${card.v} de ${palo.name}`}
-    >
-      <span className="card-corner card-corner-tl">
-        {card.v}
-        <br />
-        {palo.symbol}
-      </span>
-      <span className="card-pip">{palo.symbol}</span>
-      <span className="card-corner card-corner-br">
-        {card.v}
-        <br />
-        {palo.symbol}
-      </span>
-    </div>
+    <img
+      className={className}
+      src={cardImageSrc(card)}
+      alt={label}
+      title={label}
+      draggable={false}
+    />
   );
 }
